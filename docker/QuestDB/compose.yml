@@ -1,0 +1,75 @@
+services:
+  questdb:
+    image: questdb/questdb:latest
+    container_name: questdb
+    restart: always
+    ports:
+      - "9000:9000"   # HTTP REST / Web console
+      - "8812:8812"   # PostgreSQL wire protocol
+      - "9009:9009"   # TCP line protocol
+    volumes:
+      - ./questdb-data:/var/lib/questdb
+    environment:
+      QDB_PG_USER: admin
+      QDB_PG_PASSWORD: quest
+      QDB_HTTP_AUTHENTICATION: "true"
+
+  fastapi:
+    build:
+      context: ./app
+    container_name: fastapi
+    restart: always
+    ports:
+      - "8000:80"
+    volumes:
+      - ./app:/app
+    environment:
+      QDB_HOST: questdb
+      QDB_PORT: "8812"
+      QDB_USER: admin
+      QDB_PASSWORD: quest
+      QDB_DB: qdb
+    depends_on:
+      - questdb
+
+  grafana:
+    image: grafana/grafana-oss
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_INSTALL_PLUGINS=questdb-questdb-datasource,marcusolsson-json-datasource
+    volumes:
+      - ./grafana-storage:/var/lib/grafana
+    depends_on:
+      - fastapi
+
+  mosquitto:
+    image: eclipse-mosquitto:2.0
+    container_name: mosquitto
+    restart: unless-stopped
+    ports:
+      - "1883:1883"       # MQTT port
+      - "9001:9001"       # Websockets port (optional)
+    volumes:
+      - ./mosquitto/config:/mosquitto/config:rw
+      - ./mosquitto/data:/mosquitto/data
+      - ./mosquitto/log:/mosquitto/log
+
+  mqtt-subscriber:
+    build:
+      context: ./subscriber
+    container_name: mqtt-subscriber
+    restart: always
+    environment:
+      MQTT_HOST: mosquitto
+      MQTT_PORT: 1883
+      QDB_HOST: questdb
+      QDB_PORT: 8812
+      QDB_USER: admin
+      QDB_PASSWORD: quest
+      QDB_DB: qdb
+    depends_on:
+      - questdb
+      - mosquitto
