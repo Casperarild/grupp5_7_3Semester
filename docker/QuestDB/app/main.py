@@ -67,7 +67,7 @@ async def get_latest_temperature():
     try:
         async with app.state.db_pool.acquire() as conn:
             # NOTE: We use "Temperatur" in the SQL.
-            row = await conn.fetchrow("SELECT Temperatur FROM Temp_data ORDER BY Time DESC LIMIT 1")
+            row = await conn.fetchrow("SELECT * FROM mqtt_metrics ORDER BY ts DESC")
             
             if row is None:
                 # 404 is correct if the table exists but is empty
@@ -75,9 +75,9 @@ async def get_latest_temperature():
             
             # Access the row using the capitalized key 'Temperatur' 
             # to match the SELECT statement case.
-            latest_temp = row["Temperatur"]
+            latest_temp = row["value"]
             
-            return {"Temperatur": latest_temp}
+            return {"value": latest_temp}
             
     except asyncpg.exceptions.UndefinedTableError:
          # Explicitly catch if the table doesn't exist
