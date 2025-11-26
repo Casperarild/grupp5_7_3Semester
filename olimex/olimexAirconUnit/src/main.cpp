@@ -9,13 +9,8 @@
  * 
  */
 #include <Arduino.h>
-
-/**
- * @brief testing funtction
- * 
- */
-// put function declarations here:
-int myFunction(int, int);
+#include <WiFi.h>
+#include <PubSubClient.h>
 
 /**
  * @brief testing setup
