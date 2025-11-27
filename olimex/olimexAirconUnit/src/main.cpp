@@ -9,31 +9,53 @@
  * 
  */
 #include <Arduino.h>
-#include <WiFi.h>
-#include <PubSubClient.h>
+#include <mqtt.h>
+#include <functions.h>
 
 /**
  * @brief testing setup
  * 
  */
-void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+void setup() { 
+  Serial.begin(9600);
+  modbusStartup();
 }
+
 
 /**
  * @brief testing loop
  * 
  */
 void loop() {
-  // put your main code here, to run repeatedly:
+  // if (!client.connected()) {
+  //   reconnect();
+  // }
+  // client.loop();
+
+  // if (airUnitAutoMode.regAddress == 0){
+  //   airUnitAutoMode.regAddress = 1;
+  //   writeHoldingRegister(airUnitAutoMode.regAddress, airUnitAutoMode.holdingRegs);
+  // }
+  // else{
+    readAirconData();
+    JsonDocument doc;
+
+    // Add your data
+    doc["airTemp"] = extractAirTemp.inputRegs;
+    doc["humidtyOutdoor"] = humidityOutdoor.inputRegs;
+    doc["humidtyRoom"] = humidtyRoom.inputRegs;
+    doc["co2Sensor"] = co2Sensor.inputRegs;
+    doc["supplyAirPressure"] = supplyAirPress.inputRegs;
+    doc["supplyAirFlow"] = supplyAirFlow.inputRegs;
+    doc["exhaustAirPressure"] = exhaustAirPress.inputRegs;
+    doc["exhaustAirFlow"] = exhaustAirFlow.inputRegs;
+    // Determine required size to hold JSON + '\0'
+    size_t len = measureJson(doc) + 1;
+    char jsonBuffer[len]; // create buffer on stack
+    serializeJson(doc, jsonBuffer, len); // serialize JSON to char array
+    Serial.println(jsonBuffer); // prints JSON as char array/string
+
+    //client.publish(topic, jsonBuffer); 
+    delay(500);
 }
 
-/**
- * @brief testing function definition
- * 
- */
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
-}
