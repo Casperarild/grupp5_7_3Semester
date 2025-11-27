@@ -1,0 +1,32 @@
+apiVersion: 1
+datasources:
+  - name: Loki
+    type: loki
+    access: proxy
+    orgId: 1
+    url: http://loki:3100
+    basicAuth: false
+    isDefault: true
+    version: 1
+    editable: false
+
+  - name: QuestDB
+    type: questdb
+    access: proxy
+    orgId: 1
+    url: http://questdb:9000
+    basicAuth: false
+    isDefault: false
+    version: 1
+    editable: true
+
+  - name: FastAPI JSON
+    type: grafana-json-datasource
+    access: proxy
+    orgId: 1
+    url: http://fastapi:8000
+    basicAuth: false
+    isDefault: false
+    version: 1
+    editable: true
+

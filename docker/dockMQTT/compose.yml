@@ -46,11 +46,4 @@ services:
         condition: service_healthy
     networks:
       - mqtt_net
-    # healthcheck:
-    #   # subscriber should respond or exit 0; you can adjust logic inside script
-    #   test: ["CMD-SHELL", "pgrep -f subscriber || exit 1"]
-    #   interval: 20s
-    #   timeout: 5s
-    #   retries: 5
-    #   start_period: 10s
-
+      - loki_net

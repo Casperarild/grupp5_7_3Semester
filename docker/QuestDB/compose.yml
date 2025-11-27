@@ -11,7 +11,7 @@ services:
   questdb:
     image: questdb/questdb:latest
     container_name: questdb
-    restart: always
+    restart: unless-stopped
     ports:
       - "9000:9000"
       - "8812:8812"
@@ -19,13 +19,16 @@ services:
       - "9003:9003"
     volumes:
       - ./questdb-data:/var/lib/questdb
+      - ./questdb-data/conf/log.conf:/conf/log.conf
     environment:
       QDB_PG_USER: admin
       QDB_PG_PASSWORD: quest
       QDB_HTTP_AUTHENTICATION: "true"
+      QDB_LOG_CONF: /conf/log.conf
     networks:
       - mqtt_net
       - api_net
+      - loki_net
     healthcheck:
       test: ["CMD-SHELL", "echo", "</dev/tcp/localhost/9003"] # Tjekker om der er forbindelse til port 9003 via TCP, 9003 er healthcheck porten for QuestDB
       interval: 10s
@@ -38,7 +41,7 @@ services:
     build:
       context: ./app
     container_name: fastapi
-    restart: always
+    restart: unless-stopped
     ports:
       - "8000:80"
     volumes:
@@ -55,6 +58,7 @@ services:
     networks:
       - api_net
       - mqtt_net
+      - loki_net
     healthcheck:
       test: ["CMD-SHELL", "echo", "</dev/tcp/http://localhost:8000/"] # Tjekker om der er forbindelse til port 8000
       interval: 10s
