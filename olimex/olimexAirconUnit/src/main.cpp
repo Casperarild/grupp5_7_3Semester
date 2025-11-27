@@ -42,7 +42,7 @@ void loop() {
     if (Modtaget_data == "on") {
       Serial.println("Anlæg tænder");
       result = modbus.writeSingleRegister(367, 1);
-
+      //test
       readAirconData();
       JsonDocument doc;
 
