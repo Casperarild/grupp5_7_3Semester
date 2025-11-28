@@ -21,6 +21,9 @@ int mode = 0;
  * 
  */
 void setup() { 
+  Serial.begin(9600);
+  networkBegin();
+  mqttBegin();
   modbusStartup();
 }
 
@@ -31,6 +34,10 @@ void setup() {
  */
 void loop() {
   uint8_t result;
+  if (!client.connected()) {
+    reconnect();
+  }
+  client.loop();
 
   while (Serial.available() > 0) {
     delay(200);  // Give some time for the entire message to arrive
@@ -91,19 +98,11 @@ void loop() {
       }
   }
   if (mode !=0){
-    //readInputRegister(8);
     dataToJson();
     delay(200);
   }
   delay(200);
 }
-
-
-
-  // if (!client.connected()) {
-  //   reconnect();
-  // }
-  // client.loop();
 
   // if (airUnitAutoMode.regAddress == 0){
   //   airUnitAutoMode.regAddress = 1;
