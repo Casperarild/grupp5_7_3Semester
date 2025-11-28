@@ -12,14 +12,15 @@
 #include <mqtt.h>
 #include <functions.h>
 
-String Modtaget_data = "on";
+String Modtaget_data = "off";
+int mode = 0;
+
 
 /**
  * @brief testing setup
  * 
  */
 void setup() { 
-  Serial.begin(9600);
   modbusStartup();
 }
 
@@ -29,57 +30,75 @@ void setup() {
  * 
  */
 void loop() {
-
-    uint8_t result;
+  uint8_t result;
 
   while (Serial.available() > 0) {
-    delay(10);  // Give some time for the entire message to arrive
+    delay(200);  // Give some time for the entire message to arrive
     Modtaget_data = Serial.readStringUntil('\n');
     Modtaget_data.trim();  // Remove any whitespace
     //Serial.flush();        // Clear the serial buffer
-
+    mode = Modtaget_data.toInt();
     Serial.println("Received data: " + Modtaget_data);
-    if (Modtaget_data == "on") {
-      Serial.println("Anlæg tænder");
-      result = modbus.writeSingleRegister(367, 1);
-      //test
-      readAirconData();
-      JsonDocument doc;
-
-      // Add your data
-      doc["airTemp"] = extractAirTemp.inputRegs;
-      doc["humidtyOutdoor"] = humidityOutdoor.inputRegs;
-      doc["humidtyRoom"] = humidtyRoom.inputRegs;
-      doc["co2Sensor"] = co2Sensor.inputRegs;
-      doc["supplyAirPressure"] = supplyAirPress.inputRegs;
-      doc["supplyAirFlow"] = supplyAirFlow.inputRegs;
-      doc["exhaustAirPressure"] = exhaustAirPress.inputRegs;
-      doc["exhaustAirFlow"] = exhaustAirFlow.inputRegs;
-      // Determine required size to hold JSON + '\0'
-      size_t len = measureJson(doc) + 1;
-      char jsonBuffer[len]; // create buffer on stack
-      serializeJson(doc, jsonBuffer, len); // serialize JSON to char array
-      Serial.println(jsonBuffer); // prints JSON as char array/string
-
-      //client.publish(topic, jsonBuffer); 
-      delay(500);
-      if (result == modbus.ku8MBSuccess) {
-        Serial.println("Successfully wrote 3 to register 368");
-        
-      } else {
-        Serial.print("Modbus error: ");
-        Serial.println(result);
+    
+    switch (mode){
+      case 0:
+        Serial.println("Anlæg slukker");
+          result = modbus.writeSingleRegister(367, 0);
+          delay(100);
+          if (result == modbus.ku8MBSuccess) {
+            Serial.println("Successfully wrote 0 to register 368");
+        } else {
+          Serial.print("Modbus error: ");
+          Serial.println(result);
+        }
+        break;
+      case 1:
+        Serial.println("Anlæg tænder på lav kraft");
+        result = modbus.writeSingleRegister(367, 1);
+        delay(100);
+        if (result == modbus.ku8MBSuccess) {
+          Serial.println("Successfully wrote 1 to register 368");
+          
+        } else {
+          Serial.print("Modbus error: ");
+          Serial.println(result);
+        }
+        break;
+      case 2:
+        Serial.println("Anlæg tænder på normal kraft");
+        result = modbus.writeSingleRegister(367, 2);
+        delay(100);
+        if (result == modbus.ku8MBSuccess) {
+          Serial.println("Successfully wrote 2 to register 368");
+          
+        } else {
+          Serial.print("Modbus error: ");
+          Serial.println(result);
+        }
+        break;
+      case 3:
+        Serial.println("Anlæg tænder i auto mode");
+        result = modbus.writeSingleRegister(367, 3);
+        delay(100);
+        if (result == modbus.ku8MBSuccess) {
+          Serial.println("Successfully wrote 3 to register 368");
+          
+        } else {
+          Serial.print("Modbus error: ");
+          Serial.println(result);
+        }
+        break;
       }
-    } else if (Modtaget_data == "off") {
-      Serial.println("Anlæg slukker");
-      result = modbus.writeSingleRegister(367, 0);
-      if (result == modbus.ku8MBSuccess) {
-        Serial.println("Successfully wrote 0 to register 368");
-      } else {
-        Serial.print("Modbus error: ");
-        Serial.println(result);
-      }
-    }
+  }
+  if (mode !=0){
+    //readInputRegister(8);
+    dataToJson();
+    delay(200);
+  }
+  delay(200);
+}
+
+
 
   // if (!client.connected()) {
   //   reconnect();
@@ -91,6 +110,3 @@ void loop() {
   //   writeHoldingRegister(airUnitAutoMode.regAddress, airUnitAutoMode.holdingRegs);
   // }
   // else{
-  }
-}
-
