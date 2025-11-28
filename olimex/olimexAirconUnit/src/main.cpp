@@ -37,7 +37,6 @@ void loop() {
   if (!client.connected()) {
     reconnect();
   }
-  client.loop();
 
   while (Serial.available() > 0) {
     delay(200);  // Give some time for the entire message to arrive
@@ -97,6 +96,7 @@ void loop() {
         break;
       }
   }
+  client.loop();
   if (mode !=0){
     dataToJson();
     delay(200);

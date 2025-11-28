@@ -32,9 +32,9 @@
 WiFiClient espClient;
 PubSubClient client(espClient);
 
-const char* mqtt_client_id = "esp32-eth-sram";
+const char* mqtt_client_id = "ESP32Publisher";
 const char* topic = "spBv1.0/officeb/DDATA/ventilationchamber2/olimextemp";
-const char* mqtt_server = "10.42.0.1"; // Replace with your MQTT broker IP
+const char* mqtt_server = "127.0.0.1"; // Replace with your MQTT broker IP
 const int mqtt_port = 1883;
 
 
