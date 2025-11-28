@@ -1,0 +1,49 @@
+networks:
+  api_net:
+    external: true
+  loki_net:
+    external: true
+  mqtt_net:
+    external: true
+
+services:
+
+  mosquitto:
+    image: eclipse-mosquitto:2.0
+    container_name: mosquitto
+    restart: unless-stopped
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - ./mosquitto/config:/mosquitto/config:rw
+      - ./mosquitto/data:/mosquitto/data
+      - ./mosquitto/log:/mosquitto/log
+    networks:
+      - mqtt_net
+    healthcheck:
+      test: ["CMD", "mosquitto_pub", "-h", "localhost", "-p", "1883", "-t", "healthcheck", "-m", "ok"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+
+  mqtt-subscriber:
+    build:
+      context: ./subscriber
+    container_name: mqtt-subscriber
+    restart: always
+    environment:
+      MQTT_HOST: mosquitto
+      MQTT_PORT: 1883
+      QDB_HOST: questdb
+      QDB_PORT: 8812
+      QDB_USER: admin
+      QDB_PASSWORD: quest
+      QDB_DB: qdb
+    depends_on:
+      mosquitto:
+        condition: service_healthy
+    networks:
+      - mqtt_net
+      - loki_net
