@@ -26,7 +26,9 @@ struct inputReg
 {
   int regAddress;
   uint16_t inputRegs;
-  const char* name;
+  String id;
+  String unit;
+  float value;
 };  
 
 struct holdReg
@@ -36,16 +38,30 @@ struct holdReg
   const char* name;
 };
 
-inputReg outdoorTemp = {0, inputRegs[2], "Temperature outside"};
-inputReg extractAirTemp{8, inputRegs[2], "Temperature inside"};
-inputReg humidityOutdoor{154, inputRegs[2], "Humidity outside"};
-inputReg humidtyRoom{22, inputRegs[2], "Humidty inside"};
+inputReg outdoorTemp = {0, inputRegs[2], "Temperature outside: ", "C"};
+inputReg extractAirTemp{8, inputRegs[2], "Temperature inside: ", "C"};
+inputReg humidityOutdoor{154, inputRegs[2], "Humidity outside: ", "% RH"};
+inputReg humidtyRoom{22, inputRegs[2], "Humidty inside: ", "% RH"};
+inputReg supplyAirPress{12, inputRegs[2], "Airpressure supplied to unit: ", "Pa"};
+inputReg exhaustAirPress{13, inputRegs[2], "Exhaust airpressure: ", "Pa"};
+inputReg supplyAirFlow{14, inputRegs[2], "Air flow on supply: ", "m³/h"};
+inputReg exhaustAirFlow{15, inputRegs[2], "Air flow fom exhaust: ", "m³/h"};
+holdReg airUnitAutoMode{367, holdingRegs[2], "Aircon speed control: "};
 //inputReg co2Sensor{16, inputRegs[20], "CO2 sensor"}; //Register not available on aircon unit
-inputReg supplyAirPress{12, inputRegs[2], "Airpressure supplied to unit"};
-inputReg exhaustAirPress{13, inputRegs[2], "Exhaust airpressure"};
-inputReg supplyAirFlow{14, inputRegs[2], "Air flow on supply"};
-inputReg exhaustAirFlow{15, inputRegs[2], "Air flow fom exhaust "};
-holdReg airUnitAutoMode{367, holdingRegs[2], "Aircon speed control"};
+
+
+/*
+Reference values for modbus simulation:
+Input register values (3x)
+1 = 50
+9 = 230
+155 = 560
+23 = 500
+13 = 260
+14 = 240
+15 = 490
+16 = 470
+*/
 
 // Function to prepare for data transmission
 void preTransmission() {
@@ -73,84 +89,93 @@ uint16_t readInputRegister(int reg) {
     return val;
 }
 
-
-// Function to read discrete inputs (e.g., door statuses)
-void readDiscreteInputs() {
-    // Attempt to read 2 discrete inputs starting at address 1
-    if (modbus.readDiscreteInputs(1, 2) == modbus.ku8MBSuccess) {
-        // Store door states (note: response buffer indexing starts at 0)
-        discreteInputs[0] = modbus.getResponseBuffer(0);
-        discreteInputs[1] = modbus.getResponseBuffer(1);
-
-        // Convert boolean states to human-readable strings
-        snprintf(frontDoorStatus, sizeof(frontDoorStatus), "%s", discreteInputs[0] ? "Open" : "Closed");
-        snprintf(backDoorStatus, sizeof(backDoorStatus), "%s", discreteInputs[1] ? "Closed" : "Open");
-
-        // Display door statuses
-        Serial.printf("Front Door: %s\n", frontDoorStatus);
-        Serial.printf("Back Door: %s\n", backDoorStatus);
-    } else {
-        Serial.println("ERROR: Failed to read discrete inputs");
-    }
-}
-
 // Function to write holding registers (e.g., setpoints)
-uint16_t writeHoldingRegister(int reg, uint16_t val ) {
+void writeHoldingRegister(int reg, uint16_t val ) {
     // Prepare setpoint values
     // Load transmit buffer with setpoint values
     modbus.setTransmitBuffer(0, val);
-
     // Attempt to write 2 holding registers starting at address 3
     if (modbus.writeSingleRegister(reg, 1) == modbus.ku8MBSuccess) {
         Serial.println("Holding Registers Updated Successfully");
-        return val;
     } else {
         Serial.println("ERROR: Failed to write holding registers");
-        return 0;
     }
 }
 
-void readAirconData(){  
-    outdoorTemp.inputRegs = readInputRegister(outdoorTemp.regAddress / 10);
-    Serial.println(outdoorTemp.inputRegs);
-    delay(500);
-    extractAirTemp.inputRegs = readInputRegister(extractAirTemp.regAddress / 10.0);
-    Serial.print("Air temp: ");
-    Serial.print(extractAirTemp.inputRegs);
-    Serial.println("C");
-    delay(500);
-    humidityOutdoor.inputRegs = readInputRegister(humidityOutdoor.regAddress);
-    Serial.println(humidityOutdoor.inputRegs);
-    delay(500);
-    humidtyRoom.inputRegs = readInputRegister(humidtyRoom.regAddress);
-    Serial.println(humidtyRoom.inputRegs);
-    delay(500);
-    //co2Sensor.inputRegs = readInputRegister(co2Sensor.regAddress);
-    //Serial.println("Air temp: " + co2Sensor.inputRegs);
-    //delay(500);
-    supplyAirFlow.inputRegs = readInputRegister(supplyAirFlow.regAddress);
-    Serial.println(supplyAirFlow.inputRegs);
-    delay(500);
-    supplyAirPress.inputRegs = readInputRegister(supplyAirPress.regAddress);
-    Serial.println(supplyAirPress.inputRegs);
-    delay(500);
-    exhaustAirFlow.inputRegs = readInputRegister(exhaustAirFlow.regAddress);
-    Serial.println(exhaustAirFlow.inputRegs);
-    delay(500);
-    exhaustAirPress.inputRegs = readInputRegister(exhaustAirPress.regAddress);
-    Serial.println(exhaustAirPress.inputRegs);
+void airconDataReadPrint(float val, String id, String unit){
+    Serial.print(id);
+    Serial.print(val);
+    Serial.print(unit);
+    Serial.println();
     delay(500);
 }
 
+void readAirconData(){      
+    //float signedRaw;
+
+    outdoorTemp.value = readInputRegister(outdoorTemp.regAddress) / 10.0;
+    // if (outdoorTemp.inputRegs > 32767){
+    //     signedRaw = outdoorTemp.inputRegs - 65536;
+    //     signedRaw = signedRaw / 10.0;
+    //     outdoorTemp.value = signedRaw;
+    //     signedRaw = 0;
+    // } else {
+    //     outdoorTemp.value = outdoorTemp.inputRegs / 10.0;
+    //     Serial.println(outdoorTemp.value);
+    // }
+    airconDataReadPrint(outdoorTemp.value, outdoorTemp.id, outdoorTemp.unit);
+    delay(500);
+
+    extractAirTemp.value = readInputRegister(extractAirTemp.regAddress) / 10.0;
+    // if (raw > 32767){
+    //     raw = raw - 65536;
+    //     outdoorTemp.inputRegs = raw / 10.0;
+    //     raw = 0;
+    // } else {
+    //     extractAirTemp.inputRegs = extractAirTemp.inputRegs / 10.0;
+    // }
+    airconDataReadPrint(extractAirTemp.value, extractAirTemp.id, extractAirTemp.unit);
+    delay(500);
+
+    humidityOutdoor.value = readInputRegister(humidityOutdoor.regAddress) / 10.0;
+    airconDataReadPrint(humidityOutdoor.value, humidityOutdoor.id, humidityOutdoor.unit);
+    delay(500);
+
+    humidtyRoom.value = readInputRegister(humidtyRoom.regAddress) / 10.0;
+    airconDataReadPrint(humidtyRoom.value, humidtyRoom.id, humidtyRoom.unit);
+    delay(500);
+
+    supplyAirFlow.value = readInputRegister(supplyAirFlow.regAddress) / 10.0;
+    airconDataReadPrint(supplyAirFlow.value, supplyAirFlow.id, supplyAirFlow.unit);
+    delay(500);
+    
+    supplyAirPress.value = readInputRegister(supplyAirPress.regAddress) / 10.0;
+    airconDataReadPrint(supplyAirPress.value, supplyAirPress.id, supplyAirPress.unit);
+    delay(500);
+
+    exhaustAirFlow.value = readInputRegister(exhaustAirFlow.regAddress) / 10.0;
+    airconDataReadPrint(exhaustAirFlow.value, exhaustAirFlow.id, exhaustAirFlow.unit);
+    delay(500);
+    
+    exhaustAirPress.value = readInputRegister(exhaustAirPress.regAddress) / 10.0;
+    airconDataReadPrint(exhaustAirPress.value, exhaustAirPress.id, exhaustAirPress.unit);
+    delay(500);
+
+    //co2Sensor.inputRegs = readInputRegister(co2Sensor.regAddress);
+    //Serial.println("Air temp: " + co2Sensor.inputRegs);
+    //delay(500);
+}
+
+
 void clearValBuffer(){
-    outdoorTemp.inputRegs = 0;
-    extractAirTemp.inputRegs = 0;
-    humidityOutdoor.inputRegs = 0;
-    humidtyRoom.inputRegs = 0;
-    supplyAirFlow.inputRegs = 0;
-    supplyAirPress.inputRegs = 0;
-    exhaustAirFlow.inputRegs = 0;
-    exhaustAirPress.inputRegs = 0;
+    outdoorTemp.value = 0;
+    extractAirTemp.value = 0;
+    humidityOutdoor.value = 0;
+    humidtyRoom.value = 0;
+    supplyAirFlow.value = 0;
+    supplyAirPress.value = 0;
+    exhaustAirFlow.value = 0;
+    exhaustAirPress.value = 0;
 }
 
 
@@ -173,7 +198,6 @@ void modbusStartup(){
     modbus.postTransmission(postTransmission);
 
     Serial.println("Modbus RTU Communication Initialized Successfully");
-
 }
 
 const char* packet;
@@ -183,15 +207,15 @@ char jsonBuffer[1024];
 void dataToJson(){
     readAirconData();
 
-    doc["outdoorTemp"] = outdoorTemp.inputRegs;
-    doc["airTemp"] = extractAirTemp.inputRegs;
-    doc["humidtyOutdoor"] = humidityOutdoor.inputRegs;
-    doc["humidtyRoom"] = humidtyRoom.inputRegs;
+    doc["outdoorTemp"] = outdoorTemp.value;
+    doc["airTemp"] = extractAirTemp.value;
+    doc["humidtyOutdoor"] = humidityOutdoor.value;
+    doc["humidtyRoom"] = humidtyRoom.value;
     //doc["co2Sensor"] = co2Sensor.inputRegs;
-    doc["supplyAirPressure"] = supplyAirPress.inputRegs;
-    doc["supplyAirFlow"] = supplyAirFlow.inputRegs;
-    doc["exhaustAirPressure"] = exhaustAirPress.inputRegs;
-    doc["exhaustAirFlow"] = exhaustAirFlow.inputRegs;
+    doc["supplyAirPressure"] = supplyAirPress.value;
+    doc["supplyAirFlow"] = supplyAirFlow.value;
+    doc["exhaustAirPressure"] = exhaustAirPress.value;
+    doc["exhaustAirFlow"] = exhaustAirFlow.value;
 
     // Determine required size to hold JSON + '\0'
     serializeJson(doc, jsonBuffer, sizeof(jsonBuffer));  // Use fixed size
@@ -201,4 +225,21 @@ void dataToJson(){
     delay(500);
 }
 
-
+void modbusAirconModeCheck(){ 
+    uint16_t targetVal = 2;
+    uint8_t readResult = modbus.readHoldingRegisters(367, 1);
+    if (readResult == modbus.ku8MBSuccess) {
+        uint16_t holdingValue = modbus.getResponseBuffer(0);
+        if (holdingValue == 0) {
+            Serial.println("Anlæg tænder på normal kraft");
+            uint8_t matchVal = modbus.writeSingleRegister(367, 2);
+        if (matchVal == modbus.ku8MBSuccess) {
+            Serial.println("Successfully wrote 2 to register 368");
+            delay(500);
+        } else {
+            Serial.print("Modbus error: ");
+            delay(400);
+            } 
+        }
+    }
+}
