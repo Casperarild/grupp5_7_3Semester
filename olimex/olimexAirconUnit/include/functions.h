@@ -16,6 +16,9 @@ bool discreteInputs[2];     // Buffer for discrete inputs (binary status)
 char frontDoorStatus[10];   // Human-readable front door status
 char backDoorStatus[10];    // Human-readable back door status
 
+JsonDocument doc;
+
+
 // Create Modbus master object
 ModbusMaster modbus;
 
@@ -173,9 +176,12 @@ void modbusStartup(){
 
 }
 
+const char* packet;
+
+char jsonBuffer[1024];
+
 void dataToJson(){
     readAirconData();
-    JsonDocument doc;
 
     doc["outdoorTemp"] = outdoorTemp.inputRegs;
     doc["airTemp"] = extractAirTemp.inputRegs;
@@ -188,14 +194,9 @@ void dataToJson(){
     doc["exhaustAirFlow"] = exhaustAirFlow.inputRegs;
 
     // Determine required size to hold JSON + '\0'
-    size_t len = measureJson(doc) + 1;
-    char jsonBuffer[len]; // create buffer on stack
-    serializeJson(doc, jsonBuffer, len); // serialize JSON to char array
+    serializeJson(doc, jsonBuffer, sizeof(jsonBuffer));  // Use fixed size
+    jsonBuffer[sizeof(jsonBuffer)-1] = '\0';  // Ensure null termination
     Serial.println(jsonBuffer); // prints JSON as char array/string
-
-    delay(300);
-
-    client.publish(topic, jsonBuffer); 
 
     delay(500);
 }

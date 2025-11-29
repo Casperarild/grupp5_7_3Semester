@@ -26,32 +26,34 @@
 #include <WiFi.h>
 #include <SPI.h>
 #include <PubSubClient.h>
+#include <functions.h>
 
 
 
 WiFiClient espClient;
 PubSubClient client(espClient);
 
-const char* mqtt_client_id = "esp32-eth-sram";
+const char* mqtt_client_id = "ESP32Publisher";
 const char* topic = "spBv1.0/officeb/DDATA/ventilationchamber2/olimextemp";
-const char* mqtt_server = "10.42.0.1"; // Replace with your MQTT broker IP
+const char* mqtt_server = "10.42.0.1";
 const int mqtt_port = 1883;
-
-
 
 /**
  * @brief 
  * 
  */
-void reconnect() {
-    while (!client.connected()) {
-        Serial.print("Connecting to MQTT...");
-        Serial.print(" Connecting To MQTT Broker");
-    if (client.connect("ESP32Publisher")) {
-        Serial.println("MQTT connected");
+
+
+void connectMQTT() {
+  while (!client.connected()) {
+    Serial.println("Connecting to MQTT...");
+    if (client.connect("ESP32Client")) {
+      Serial.println("Connected to MQTT broker");
+      // subscribe or publish here if needed  
     } else {
-        Serial.print("MQTT Failed To Connect");
-      delay(8000);
+      Serial.print("Failed MQTT connection, state=");
+      Serial.println(client.state());
+      delay(2000);
     }
   }
 }
@@ -88,8 +90,4 @@ void WiFiEvent(arduino_event_id_t event) {
 void networkBegin(){
     Network.onEvent(WiFiEvent);
     ETH.begin();
-}
-
-void mqttBegin(){
-    client.setServer(mqtt_server, mqtt_port);
 }
