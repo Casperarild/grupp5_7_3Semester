@@ -2,7 +2,6 @@ import asyncpg
 from fastapi import FastAPI, HTTPException
 import os
 
-# Get configuration from environment variables (set in docker-compose.yaml)
 DATABASE_CONFIG = {
     "host": os.getenv("QDB_HOST", "questdb"),
     "port": int(os.getenv("QDB_PORT", 8812)),
@@ -13,11 +12,9 @@ DATABASE_CONFIG = {
 
 app = FastAPI(title="QuestDB FastAPI Service")
 
-# --- Database Pool Management ---
 
 @app.on_event("startup")
 async def startup():
-    """Create a connection pool to QuestDB upon application startup."""
     try:
         app.state.db_pool = await asyncpg.create_pool(**DATABASE_CONFIG)
         print("Successfully created asyncpg connection pool to QuestDB.")
@@ -28,22 +25,18 @@ async def startup():
 
 @app.on_event("shutdown")
 async def shutdown():
-    """Close the connection pool upon application shutdown."""
     if hasattr(app.state, 'db_pool') and app.state.db_pool:
         await app.state.db_pool.close()
         print("Closed asyncpg connection pool.")
 
-# --- API Endpoints ---
-
 @app.get("/")
 def read_root():
-    """Simple health check."""
+    """Health check."""
     return {"status": "ok", "message": "FastAPI is running"}
 
 
 @app.get("/qdbversion")
 async def get_questdb_version():
-    """Query QuestDB for a simple connectivity check using a safe, QuestDB-supported function."""
     try:
         async with app.state.db_pool.acquire() as conn:
             # FIX: Use a safe, supported QuestDB query to confirm connectivity.
@@ -59,30 +52,155 @@ async def get_questdb_version():
         raise HTTPException(status_code=500, detail=f"Database error in /qdbversion: {str(e)}")
 
 
-@app.get("/temperatur")
-async def get_latest_temperature():
-    """
-    Retrieves the latest temperature reading from the 'Temp_data' table.
-    """
+@app.get("/exhtemperatur")
+async def get_latest_exhtemperature():
     try:
         async with app.state.db_pool.acquire() as conn:
-            # NOTE: We use "Temperatur" in the SQL.
-            row = await conn.fetchrow("SELECT Temperatur FROM Temp_data ORDER BY Time DESC LIMIT 1")
+            row = await conn.fetchrow("SELECT * FROM Olimex_Vent ORDER BY ts DESC")
             
             if row is None:
-                # 404 is correct if the table exists but is empty
-                raise HTTPException(status_code=404, detail="No data found in Temp_data table.")
+                raise HTTPException(status_code=404, detail="No data found")
             
-            # Access the row using the capitalized key 'Temperatur' 
-            # to match the SELECT statement case.
-            latest_temp = row["Temperatur"]
+            latest_temp = row["extractAirTemp"]
             
-            return {"Temperatur": latest_temp}
+            return {"extractAirTemp": latest_temp}
             
     except asyncpg.exceptions.UndefinedTableError:
-         # Explicitly catch if the table doesn't exist
-        raise HTTPException(status_code=500, detail="The table 'Temp_data' does not exist in QuestDB. Please create it.")
+        raise HTTPException(status_code=500, detail="Table does not exist")
     except Exception as e:
-        # Catch other database or unexpected errors
+        print(f"Error in /temperatur: {e}")
+        raise HTTPException(status_code=500, detail=f"Internal Server Error: {str(e)}")
+
+@app.get("/outtemperatur")
+async def get_latest_outtemperature():
+    try:
+        async with app.state.db_pool.acquire() as conn:
+            row = await conn.fetchrow("SELECT * FROM Olimex_Vent ORDER BY ts DESC LIMIT 1")
+            
+            if row is None:
+                raise HTTPException(status_code=404, detail="No data found")
+            
+            latest_outtemp = row["outdoorTemp"]
+            
+            return {"outdoorTemp": latest_outtemp}
+            
+    except asyncpg.exceptions.UndefinedTableError:
+        raise HTTPException(status_code=500, detail="Table does not exist")
+    except Exception as e:
+        print(f"Error in /temperatur: {e}")
+        raise HTTPException(status_code=500, detail=f"Internal Server Error: {str(e)}")
+
+
+@app.get("/outhumidity")
+async def get_latest_outhumidity():
+    try:
+        async with app.state.db_pool.acquire() as conn:
+            row = await conn.fetchrow("SELECT * FROM Olimex_Vent ORDER BY ts DESC LIMIT 1")
+            
+            if row is None:
+                raise HTTPException(status_code=404, detail="No data found")
+            
+            latest_outhdumidity = row["humidityOutdoor"]
+            
+            return {"humidityOutdoor": latest_outhdumidity}
+            
+    except asyncpg.exceptions.UndefinedTableError:
+        raise HTTPException(status_code=500, detail="Table does not exist")
+    except Exception as e:
+        print(f"Error in /temperatur: {e}")
+        raise HTTPException(status_code=500, detail=f"Internal Server Error: {str(e)}")
+
+@app.get("/roomhumidity")
+async def get_latest_roomhumidity():
+    try:
+        async with app.state.db_pool.acquire() as conn:
+            row = await conn.fetchrow("SELECT * FROM Olimex_Vent ORDER BY ts DESC LIMIT 1")
+            
+            if row is None:
+                raise HTTPException(status_code=404, detail="No data found")
+            
+            latest_roomhdumidity = row["humidityRoom"]
+            
+            return {"humidityRoom": latest_roomhdumidity}
+            
+    except asyncpg.exceptions.UndefinedTableError:
+        raise HTTPException(status_code=500, detail="Table does not exist")
+    except Exception as e:
+        print(f"Error in /temperatur: {e}")
+        raise HTTPException(status_code=500, detail=f"Internal Server Error: {str(e)}")
+
+@app.get("/supplyAirPress")
+async def get_latest_sAirPress():
+    try:
+        async with app.state.db_pool.acquire() as conn:
+            row = await conn.fetchrow("SELECT * FROM Olimex_Vent ORDER BY ts DESC LIMIT 1")
+            
+            if row is None:
+                raise HTTPException(status_code=404, detail="No data found")
+            
+            latest_suAirPRess = row["supplyAirPress"]
+            
+            return {"supplyAirPress": latest_suAirPRess}
+            
+    except asyncpg.exceptions.UndefinedTableError:
+        raise HTTPException(status_code=500, detail="Table does not exist")
+    except Exception as e:
+        print(f"Error in /temperatur: {e}")
+        raise HTTPException(status_code=500, detail=f"Internal Server Error: {str(e)}")
+
+@app.get("/exhaustAirPress")
+async def get_latest_exAirPress():
+    try:
+        async with app.state.db_pool.acquire() as conn:
+            row = await conn.fetchrow("SELECT * FROM Olimex_Vent ORDER BY ts DESC LIMIT 1")
+            
+            if row is None:
+                raise HTTPException(status_code=404, detail="No data found")
+            
+            latest_exAirPRess = row["exhaustAirPress"]
+            
+            return {"exhaustAirPress": latest_exAirPRess}
+            
+    except asyncpg.exceptions.UndefinedTableError:
+        raise HTTPException(status_code=500, detail="Table does not exist")
+    except Exception as e:
+        print(f"Error in /temperatur: {e}")
+        raise HTTPException(status_code=500, detail=f"Internal Server Error: {str(e)}")
+    
+@app.get("/supplyAirFlow")
+async def get_latest_sAirFlow():
+    try:
+        async with app.state.db_pool.acquire() as conn:
+            row = await conn.fetchrow("SELECT * FROM Olimex_Vent ORDER BY ts DESC LIMIT 1")
+            
+            if row is None:
+                raise HTTPException(status_code=404, detail="No data found")
+            
+            latest_suAirFlow = row["supplyAirFlow"]
+            
+            return {"supplyAirFlow": latest_suAirFlow}
+            
+    except asyncpg.exceptions.UndefinedTableError:
+        raise HTTPException(status_code=500, detail="Table does not exist")
+    except Exception as e:
+        print(f"Error in /temperatur: {e}")
+        raise HTTPException(status_code=500, detail=f"Internal Server Error: {str(e)}")
+
+@app.get("/exhaustAirFlow")
+async def get_latest_exAirFlow():
+    try:
+        async with app.state.db_pool.acquire() as conn:
+            row = await conn.fetchrow("SELECT * FROM Olimex_Vent ORDER BY ts DESC LIMIT 1")
+            
+            if row is None:
+                raise HTTPException(status_code=404, detail="No data found")
+            
+            latest_exAirFlow = row["exhaustAirFlow"]
+            
+            return {"exhaustAirFlow": latest_exAirFlow}
+            
+    except asyncpg.exceptions.UndefinedTableError:
+        raise HTTPException(status_code=500, detail="Table does not exist")
+    except Exception as e:
         print(f"Error in /temperatur: {e}")
         raise HTTPException(status_code=500, detail=f"Internal Server Error: {str(e)}")
