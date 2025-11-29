@@ -2,8 +2,8 @@
 #include <ArduinoJson.h>
 
 // ================ MODBUS COMMUNICATION CONFIGURATION ================
-#define RX_PIN 36         // UART2 RX pin
-#define TX_PIN 4            // UART2 TX pin
+#define RX_PIN 36         // UART2 RX pin 36 for olimex 16 for esp
+#define TX_PIN 4           // UART2 TX pin 4 for olimex 17 for esp
 #define MAX485_DE 5         // RS485 Driver Enable pin
 #define MAX485_RE_NEG 14    // RS485 Receiver Enable pin (active low)
 #define BAUD_RATE 9600      // Communication speed
@@ -23,24 +23,26 @@ struct inputReg
 {
   int regAddress;
   uint16_t inputRegs;
+  const char* name;
 };  
 
 struct holdReg
 {
   int regAddress;
   uint16_t holdingRegs;
+  const char* name;
 };
 
-holdReg outdoorTemp = {391, holdingRegs[2]};
-inputReg extractAirTemp{8, inputRegs[2]};
-inputReg humidityOutdoor{154, inputRegs[2]};
-inputReg humidtyRoom{22, inputRegs[2]};
-inputReg co2Sensor{16, inputRegs[2]};
-inputReg supplyAirPress{12, inputRegs[2]};
-inputReg exhaustAirPress{13, inputRegs[2]};
-inputReg supplyAirFlow{14, inputRegs[2]};
-inputReg exhaustAirFlow{15, inputRegs[2]};
-holdReg airUnitAutoMode{367, holdingRegs[2]};
+inputReg outdoorTemp = {0, inputRegs[2], "Temperature outside"};
+inputReg extractAirTemp{8, inputRegs[2], "Temperature inside"};
+inputReg humidityOutdoor{154, inputRegs[2], "Humidity outside"};
+inputReg humidtyRoom{22, inputRegs[2], "Humidty inside"};
+//inputReg co2Sensor{16, inputRegs[20], "CO2 sensor"}; //Register not available on aircon unit
+inputReg supplyAirPress{12, inputRegs[2], "Airpressure supplied to unit"};
+inputReg exhaustAirPress{13, inputRegs[2], "Exhaust airpressure"};
+inputReg supplyAirFlow{14, inputRegs[2], "Air flow on supply"};
+inputReg exhaustAirFlow{15, inputRegs[2], "Air flow fom exhaust "};
+holdReg airUnitAutoMode{367, holdingRegs[2], "Aircon speed control"};
 
 // Function to prepare for data transmission
 void preTransmission() {
@@ -59,10 +61,11 @@ void postTransmission() {
 uint16_t readInputRegister(int reg) {
     uint16_t val;
     if (modbus.readInputRegisters(reg, 1) == modbus.ku8MBSuccess) {
+        //Serial.println(modbus.getResponseBuffer(0));
         val = modbus.getResponseBuffer(0);
     } else {
         Serial.println("ERROR: Failed to read input registers");
-        val = 0; // Set error value
+        val = 8009; // Set error value
     }
     return val;
 }
@@ -104,9 +107,14 @@ uint16_t writeHoldingRegister(int reg, uint16_t val ) {
     }
 }
 
-void readAirconData(){
-    extractAirTemp.inputRegs = readInputRegister(extractAirTemp.regAddress);
-    Serial.println(extractAirTemp.inputRegs);
+void readAirconData(){  
+    outdoorTemp.inputRegs = readInputRegister(outdoorTemp.regAddress / 10);
+    Serial.println(outdoorTemp.inputRegs);
+    delay(500);
+    extractAirTemp.inputRegs = readInputRegister(extractAirTemp.regAddress / 10.0);
+    Serial.print("Air temp: ");
+    Serial.print(extractAirTemp.inputRegs);
+    Serial.println("C");
     delay(500);
     humidityOutdoor.inputRegs = readInputRegister(humidityOutdoor.regAddress);
     Serial.println(humidityOutdoor.inputRegs);
@@ -114,9 +122,9 @@ void readAirconData(){
     humidtyRoom.inputRegs = readInputRegister(humidtyRoom.regAddress);
     Serial.println(humidtyRoom.inputRegs);
     delay(500);
-    co2Sensor.inputRegs = readInputRegister(co2Sensor.regAddress);
-    Serial.println(co2Sensor.inputRegs);
-    delay(500);
+    //co2Sensor.inputRegs = readInputRegister(co2Sensor.regAddress);
+    //Serial.println("Air temp: " + co2Sensor.inputRegs);
+    //delay(500);
     supplyAirFlow.inputRegs = readInputRegister(supplyAirFlow.regAddress);
     Serial.println(supplyAirFlow.inputRegs);
     delay(500);
@@ -131,6 +139,16 @@ void readAirconData(){
     delay(500);
 }
 
+void clearValBuffer(){
+    outdoorTemp.inputRegs = 0;
+    extractAirTemp.inputRegs = 0;
+    humidityOutdoor.inputRegs = 0;
+    humidtyRoom.inputRegs = 0;
+    supplyAirFlow.inputRegs = 0;
+    supplyAirPress.inputRegs = 0;
+    exhaustAirFlow.inputRegs = 0;
+    exhaustAirPress.inputRegs = 0;
+}
 
 
 void modbusStartup(){
@@ -139,9 +157,6 @@ void modbusStartup(){
     pinMode(MAX485_DE, OUTPUT);
     digitalWrite(MAX485_RE_NEG, LOW);
     digitalWrite(MAX485_DE, LOW);
-
-    // Start serial communication for debugging
-    Serial.begin(9600);
     Serial.println("ESP32 Modbus RTU Communication Initializing...");
 
     // Configure UART2 for Modbus communication
@@ -156,6 +171,33 @@ void modbusStartup(){
 
     Serial.println("Modbus RTU Communication Initialized Successfully");
 
+}
+
+void dataToJson(){
+    readAirconData();
+    JsonDocument doc;
+
+    doc["outdoorTemp"] = outdoorTemp.inputRegs;
+    doc["airTemp"] = extractAirTemp.inputRegs;
+    doc["humidtyOutdoor"] = humidityOutdoor.inputRegs;
+    doc["humidtyRoom"] = humidtyRoom.inputRegs;
+    //doc["co2Sensor"] = co2Sensor.inputRegs;
+    doc["supplyAirPressure"] = supplyAirPress.inputRegs;
+    doc["supplyAirFlow"] = supplyAirFlow.inputRegs;
+    doc["exhaustAirPressure"] = exhaustAirPress.inputRegs;
+    doc["exhaustAirFlow"] = exhaustAirFlow.inputRegs;
+
+    // Determine required size to hold JSON + '\0'
+    size_t len = measureJson(doc) + 1;
+    char jsonBuffer[len]; // create buffer on stack
+    serializeJson(doc, jsonBuffer, len); // serialize JSON to char array
+    Serial.println(jsonBuffer); // prints JSON as char array/string
+
+    delay(300);
+
+    client.publish(topic, jsonBuffer); 
+
+    delay(500);
 }
 
 
