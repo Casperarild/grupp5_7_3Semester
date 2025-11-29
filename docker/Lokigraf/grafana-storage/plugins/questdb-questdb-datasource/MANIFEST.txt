@@ -1,0 +1,41 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+{
+  "manifestVersion": "2.0.0",
+  "signatureType": "commercial",
+  "signedByOrg": "questdb",
+  "signedByOrgName": "questdb",
+  "plugin": "questdb-questdb-datasource",
+  "version": "0.1.6",
+  "time": 1757672485836,
+  "keyId": "7e4d0c6a708866e7",
+  "files": {
+    "gpx_questdb_darwin_arm64": "7d63e82e83905c2d38a894d424ae82bea487d1e1db922d2cf5a9b2d0a8d329e0",
+    "README.md": "3a31acb8ad3090d15b39856544b3f91d7b0ead9b4b245ff31deeafd057ec13eb",
+    "LICENSE": "6004877f0c217f92ab02f8b8d61df352fe65ce0a752e5919b1a64d8ee43a8d56",
+    "gpx_questdb_linux_arm": "de5869348d3fda6441b2f1fc862614169052f93eabc04e3254274be9997b5114",
+    "module.js.LICENSE.txt": "51f21678ea3163dbd6df4abd3c58c069d4a722b0055f7ef97b7a2e8bb6514121",
+    "gpx_questdb_linux_arm64": "f2849c498405b79725ab739321db4e53b9b469fece5ec20703053df14ce292d8",
+    "gpx_questdb_windows_amd64.exe": "1c5f91de7339e4be9bc1a1c08296248db8aaf9c63d02bca07b57e53d2b0d46d6",
+    "img/logo.svg": "2d7cc604af41ddef575e0949e30c845caf8007b582c30184504a7344f76510ae",
+    "img/sql_builder.png": "1bbd4bbb9c1abcf454744751f1878a5e457db5cb1498812056e20629ddf2d625",
+    "gpx_questdb_darwin_amd64": "d6523d77f1285f40c2ba480ad678cd1cb900655902494ce6ed2e7fd8befb5a23",
+    "go_plugin_build_manifest": "4b837edab0bba826357057ec22ef8d33b167f81104b65048433e3727b45f0b54",
+    "module.js": "4e4f23b0842b72effb7b2ca52bc2f4c2f40fe4479b21a61ff590aa1199c90e48",
+    "module.js.map": "521627d677f5b866195f5a6351a946ae8837a7d60fee9ea28408faa27da4bc06",
+    "plugin.json": "e658e10c8f5aad085855c648c2185933f7f226775531a852d1ef8f08e9e9dbe3",
+    "gpx_questdb_linux_amd64": "fb0612c4ebbcb6b1e53dfaa5896a2a926ccf4ad1f8ae09e65f2bd1e8b010c1ba",
+    "CHANGELOG.md": "89a075ad7f04182abbcc54786f0632b3382a17a751777ed9d9584cb530373fd4"
+  }
+}
+-----BEGIN PGP SIGNATURE-----
+
+wsA9BAETCgBtBYJow/QmCZB+TQxqcIhm50UUAAAAAAAcACBzYWx0QG5vdGF0
+aW9ucy5vcGVucGdwanMub3Jnui/1jbplBW1l+NR4pywZtf3qqU3Xj0tTk3mB
+oM590gMWIQTzOyW2kQdOhGNlcPN+TQxqcIhm5wAAoTgCAQH31sBU1nO+JidM
+gCpFIYaEoonue6ptvtYH0Z4R9G6PlUJUtsodjdjH+RHNCCzdtzp1q8UBdJii
+9mC8x1xZvPQvAgi7QhlPWvdu4JsvNUonfg9vQ3gz0zuealWmMLeE5KylCGRM
+WIVLqxygbf0CcVWTppIAWvS8K3KWX2z5ui92JHMJoA==
+=fI2J
+-----END PGP SIGNATURE-----

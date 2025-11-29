@@ -1,0 +1,55 @@
+networks:
+  api_net:
+    external: true
+  loki_net:
+    external: true
+  mqtt_net:
+    external: true
+services:
+
+  loki:
+    image: grafana/loki:latest
+    ports:
+      - "3100:3100"
+    command: -config.file=/etc/loki/local-config.yaml
+    networks:
+      - loki_net
+      
+  promtail:
+    image: grafana/promtail:latest
+    container_name: promtail
+    volumes:
+      - ./promtail-config/config.yml:/etc/promtail/config.yml
+      - ../dockMQTT/mosquitto/log:/mosquitto/log
+      - ../QuestDB/app/logs:/app/logs
+      - ../QuestDB/questdb-data:/var/lib/questdb/db/log
+    command: -config.file=/etc/promtail/config.yml
+    networks:
+      - loki_net
+    
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    networks:
+      - loki_net
+      - api_net
+    environment:
+      GF_PATHS_PROVISIONING: /etc/grafana/provisioning
+      GF_AUTH_ANONYMOUS_ENABLED: "false"
+      #GF_AUTH_ANONYMOUS_ORG_ROLE: Admin
+      GF_FEATURE_TOGGLES_ENABLE: alertingSimplifiedRouting,alertingQueryAndExpressionsStepMode
+      GF_INSTALL_PLUGINS: questdb-questdb-datasource,marcusolsson-json-datasource
+    volumes:
+      - ./grafana-storage:/var/lib/grafana
+      - ./provisioning:/etc/grafana/provisioning
+    healthcheck:
+      test: ["CMD-SHELL", "echo", "</dev/tcp/localhost/3000"]
+      interval: 20s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+
