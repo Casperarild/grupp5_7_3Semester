@@ -42,7 +42,7 @@ DOXYFILE_ENCODING      = UTF-8
 # title of most generated pages and in a few other places.
 # The default value is: My Project.
 
-PROJECT_NAME           = "My Project"
+PROJECT_NAME           = "Optilogic Aircon Monitoring"
 
 # The PROJECT_NUMBER tag can be used to enter a project or revision number. This
 # could be handy for archiving the generated documentation or if some version
@@ -74,7 +74,7 @@ PROJECT_ICON           =
 # entered, it will be relative to the location where Doxygen was started. If
 # left blank the current directory will be used.
 
-OUTPUT_DIRECTORY       =
+OUTPUT_DIRECTORY       = 
 
 # If the CREATE_SUBDIRS tag is set to YES then Doxygen will create up to 4096
 # sub-directories (in 2 levels) under the output directory of each output format
@@ -499,7 +499,7 @@ TYPEDEF_HIDES_STRUCT   = NO
 # the optimal cache size from a speed point of view.
 # Minimum value: 0, maximum value: 9, default value: 0.
 
-LOOKUP_CACHE_SIZE      = 0
+LOOKUP_CACHE_SIZE      = 9
 
 # The NUM_PROC_THREADS specifies the number of threads Doxygen is allowed to use
 # during processing. When set to 0 Doxygen will based this on the number of
@@ -876,7 +876,7 @@ EXTERNAL_TOOL_PATH     =
 # messages are off.
 # The default value is: NO.
 
-QUIET                  = NO
+QUIET                  = YES
 
 # The WARNINGS tag can be used to turn on/off the warning messages that are
 # generated to standard error (stderr) by Doxygen. If WARNINGS is set to YES
@@ -991,9 +991,9 @@ WARN_LOGFILE           =
 # spaces. See also FILE_PATTERNS and EXTENSION_MAPPING
 # Note: If this tag is empty the current directory is searched.
 
-INPUT                  = main.cpp \
+INPUT                  = src/ \
                          include/ \
-                         src/
+                         src/main.cpp
 
 # This tag can be used to specify the character encoding of the source files
 # that Doxygen parses. Internally Doxygen uses the UTF-8 encoding. Doxygen uses
@@ -1088,7 +1088,7 @@ FILE_PATTERNS          = *.c \
 # be searched for input files as well.
 # The default value is: NO.
 
-RECURSIVE              = NO
+RECURSIVE              = YES
 
 # The EXCLUDE tag can be used to specify files and/or directories that should be
 # excluded from the INPUT source files. This way you can easily exclude a
@@ -2523,7 +2523,7 @@ INCLUDE_PATH           =
 # used.
 # This tag requires that the tag ENABLE_PREPROCESSING is set to YES.
 
-INCLUDE_FILE_PATTERNS  =
+INCLUDE_FILE_PATTERNS  = *.cpp *.h *.hpp
 
 # The PREDEFINED tag can be used to specify one or more macro names that are
 # defined before the preprocessor is started (similar to the -D option of e.g.

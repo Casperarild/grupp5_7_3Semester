@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "My Project", "index.html", [
+  [ "Optilogic Aircon Monitoring", "index.html", [
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
