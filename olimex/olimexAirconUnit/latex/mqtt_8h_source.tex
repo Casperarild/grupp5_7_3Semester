@@ -1,0 +1,111 @@
+\doxysection{mqtt.\+h}
+\hypertarget{mqtt_8h_source}{}\label{mqtt_8h_source}\index{include/mqtt.h@{include/mqtt.h}}
+\mbox{\hyperlink{mqtt_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ \ \ This\ sketch\ shows\ the\ Ethernet\ event\ usage}}
+\DoxyCodeLine{00003\ \textcolor{comment}{}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ Important\ to\ be\ defined\ BEFORE\ including\ ETH.h\ for\ ETH.begin()\ to\ work.}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Example\ RMII\ LAN8720\ (Olimex,\ etc.)}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ ETH\_PHY\_MDC}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ ETH\_PHY\_TYPE\ ETH\_PHY\_LAN8720}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#if\ CONFIG\_IDF\_TARGET\_ESP32}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ ETH\_PHY\_ADDR\ \ 0}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ ETH\_PHY\_MDC\ \ \ 23}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ ETH\_PHY\_MDIO\ \ 18}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ ETH\_PHY\_POWER\ -\/1}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ ETH\_CLK\_MODE\ \ ETH\_CLOCK\_GPIO0\_IN}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#elif\ CONFIG\_IDF\_TARGET\_ESP32P4}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ ETH\_PHY\_ADDR\ \ 0}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ ETH\_PHY\_MDC\ \ \ 31}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ ETH\_PHY\_MDIO\ \ 52}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ ETH\_PHY\_POWER\ 51}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ ETH\_CLK\_MODE\ \ EMAC\_CLK\_EXT\_IN}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <ETH.h>}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ <WiFi.h>}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ <SPI.h>}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ <PubSubClient.h>}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{functions_8h}{functions.h}}>}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ WiFiClient\ \mbox{\hyperlink{mqtt_8h_abd77e757e4b3bb6f1e4b42b21ea9e040}{espClient}};}
+\DoxyCodeLine{00034\ PubSubClient\ \mbox{\hyperlink{mqtt_8h_aee63e84c606cfaefce454689113c636c}{client}}(\mbox{\hyperlink{mqtt_8h_abd77e757e4b3bb6f1e4b42b21ea9e040}{espClient}});}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{mqtt_8h_af7c6bd130c027a155eb2cc3e9b6d245f}{mqtt\_client\_id}}\ =\ \textcolor{stringliteral}{"{}ESP32Publisher"{}};}
+\DoxyCodeLine{00037\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{mqtt_8h_a4ed7b4c951621dbec76099594f64d249}{topic}}\ =\ \textcolor{stringliteral}{"{}spBv1.0/officeb/DDATA/ventilationchamber2/olimextemp"{}};}
+\DoxyCodeLine{00038\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{mqtt_8h_ae62fa8557ef4586408dcbe2f1a09e839}{mqtt\_server}}\ =\ \textcolor{stringliteral}{"{}10.42.0.1"{}};}
+\DoxyCodeLine{00039\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{mqtt_8h_ae4f28c882f3fb17a47d7bfea3dd5cc02}{mqtt\_port}}\ =\ 1883;}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{mqtt_8h_a809f04a8ce2340560609f6fb2cb82d9e}{connectMQTT}}()\ \{}
+\DoxyCodeLine{00048\ \ \ \textcolor{keywordflow}{while}\ (!\mbox{\hyperlink{mqtt_8h_aee63e84c606cfaefce454689113c636c}{client}}.connected())\ \{}
+\DoxyCodeLine{00049\ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Connecting\ to\ MQTT..."{}});}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{mqtt_8h_aee63e84c606cfaefce454689113c636c}{client}}.connect(\textcolor{stringliteral}{"{}ESP32Client"{}}))\ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Connected\ to\ MQTT\ broker"{}});}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \textcolor{comment}{//\ subscribe\ or\ publish\ here\ if\ needed\ \ }}
+\DoxyCodeLine{00053\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ Serial.print(\textcolor{stringliteral}{"{}Failed\ MQTT\ connection,\ state="{}});}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ Serial.println(\mbox{\hyperlink{mqtt_8h_aee63e84c606cfaefce454689113c636c}{client}}.state());}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ delay(2000);}
+\DoxyCodeLine{00057\ \ \ \ \ \}}
+\DoxyCodeLine{00058\ \ \ \}}
+\DoxyCodeLine{00059\ \}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{mqtt_8h_ac84beb1a79f197fb28f9762c774e856c}{eth\_connected}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{mqtt_8h_ac093c36743c080f3275153417463982c}{WiFiEvent}}(arduino\_event\_id\_t\ event)\ \{}
+\DoxyCodeLine{00064\ \ \ \textcolor{keywordflow}{switch}\ (event)\ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordflow}{case}\ ARDUINO\_EVENT\_ETH\_START:}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Ethernet\ started"{}});}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ ETH.setHostname(\textcolor{stringliteral}{"{}esp32-\/eth"{}});}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordflow}{case}\ ARDUINO\_EVENT\_ETH\_CONNECTED:}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Ethernet\ connected"{}});}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordflow}{case}\ ARDUINO\_EVENT\_ETH\_GOT\_IP:}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ Serial.print(\textcolor{stringliteral}{"{}IP\ Address:\ "{}});}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ Serial.println(ETH.localIP());}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \mbox{\hyperlink{mqtt_8h_ac84beb1a79f197fb28f9762c774e856c}{eth\_connected}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordflow}{case}\ ARDUINO\_EVENT\_ETH\_DISCONNECTED:}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Ethernet\ disconnected"{}});}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \mbox{\hyperlink{mqtt_8h_ac84beb1a79f197fb28f9762c774e856c}{eth\_connected}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordflow}{case}\ ARDUINO\_EVENT\_ETH\_STOP:}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Ethernet\ stopped"{}});}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \mbox{\hyperlink{mqtt_8h_ac84beb1a79f197fb28f9762c774e856c}{eth\_connected}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00087\ \ \ \}}
+\DoxyCodeLine{00088\ \}}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{mqtt_8h_a67cddaa94a0b01a70efbde0f96c34e36}{networkBegin}}()\{}
+\DoxyCodeLine{00091\ \ \ \ \ Network.onEvent(\mbox{\hyperlink{mqtt_8h_ac093c36743c080f3275153417463982c}{WiFiEvent}});}
+\DoxyCodeLine{00092\ \ \ \ \ ETH.begin();}
+\DoxyCodeLine{00093\ \}}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{mqtt_8h_a673f3205e2f17d1531578b777786c027}{connectMqtt}}()\{}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{mqtt_8h_aee63e84c606cfaefce454689113c636c}{client}}.connected())\ \{}
+\DoxyCodeLine{00097\ \ \ \ \ \mbox{\hyperlink{mqtt_8h_a809f04a8ce2340560609f6fb2cb82d9e}{connectMQTT}}();}
+\DoxyCodeLine{00098\ \ \ \}}
+\DoxyCodeLine{00099\ \ \ \mbox{\hyperlink{mqtt_8h_aee63e84c606cfaefce454689113c636c}{client}}.loop();}
+\DoxyCodeLine{00100\ \}}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{mqtt_8h_a6c01e814131babb9727cabb6854b751c}{jsonPublish}}()\{}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{mqtt_8h_aee63e84c606cfaefce454689113c636c}{client}}.publish(\mbox{\hyperlink{mqtt_8h_a4ed7b4c951621dbec76099594f64d249}{topic}},\ \mbox{\hyperlink{functions_8h_a8ac263a6b1bbb921fb3654e40015bd16}{jsonBuffer}}))\ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}JSON\ published"{}});}
+\DoxyCodeLine{00106\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Publish\ failed"{}});\ }
+\DoxyCodeLine{00108\ \ \ \ \ \}\ \ \ }
+\DoxyCodeLine{00109\ \}}
+
+\end{DoxyCode}

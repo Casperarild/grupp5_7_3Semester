@@ -1,0 +1,307 @@
+\doxysection{include/functions.h File Reference}
+\hypertarget{functions_8h}{}\label{functions_8h}\index{include/functions.h@{include/functions.h}}
+{\ttfamily \#include $<$Modbus\+Master.\+h$>$}\newline
+{\ttfamily \#include $<$Arduino\+Json.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structinputReg}{input\+Reg}}
+\item 
+struct \mbox{\hyperlink{structholdReg}{hold\+Reg}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{functions_8h_aa7089c01538b339ae745173c117f95b9}{RX\+\_\+\+PIN}}~36
+\item 
+\#define \mbox{\hyperlink{functions_8h_a3bb17f5daa2b1eaef58c8aa2d989e27e}{TX\+\_\+\+PIN}}~4
+\item 
+\#define \mbox{\hyperlink{functions_8h_a33a76bc034910d4d3b9242a493de7736}{MAX485\+\_\+\+DE}}~5
+\item 
+\#define \mbox{\hyperlink{functions_8h_ac74ee062bc05304c6ba3ae2ac0c63925}{MAX485\+\_\+\+RE\+\_\+\+NEG}}~14
+\item 
+\#define \mbox{\hyperlink{functions_8h_ad4455691936f92fdd6c37566fc58ba1f}{BAUD\+\_\+\+RATE}}~9600
+\item 
+\#define \mbox{\hyperlink{functions_8h_a1aef92ccc58f5b6eb11f9a32c8f1e3d6}{MODBUS\+\_\+\+SLAVE\+\_\+\+ID}}~1
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{functions_8h_a1c43d8a4afead0d0df29635242290377}{pre\+Transmission}} ()
+\item 
+void \mbox{\hyperlink{functions_8h_a33b535e84f654e423bb627b25b7b3759}{post\+Transmission}} ()
+\item 
+uint16\+\_\+t \mbox{\hyperlink{functions_8h_add9bb36f26e78d4a7dfa40104a04818a}{read\+Input\+Register}} (int reg)
+\item 
+void \mbox{\hyperlink{functions_8h_a21e3bbf9fc0d77aec1e168538db51e66}{write\+Holding\+Register}} (int reg, uint16\+\_\+t val)
+\item 
+void \mbox{\hyperlink{functions_8h_a9e7232bbdc9e9ddec07979ed05de21a9}{aircon\+Data\+Read\+Print}} (float val, String id, String unit)
+\item 
+void \mbox{\hyperlink{functions_8h_abfa43d8e009406c47b53ddf9ca18000b}{read\+Aircon\+Data}} ()
+\item 
+void \mbox{\hyperlink{functions_8h_af7517bdd27420a534c69b55fe5baf00d}{clear\+Val\+Buffer}} ()
+\item 
+void \mbox{\hyperlink{functions_8h_a60bdef55bb648f1a1be2599ddb893bbb}{modbus\+Startup}} ()
+\item 
+void \mbox{\hyperlink{functions_8h_a602b0d79488408175817d7845c45178f}{data\+To\+Json}} ()
+\item 
+void \mbox{\hyperlink{functions_8h_aef46f666200b23c39932a85ab1ac03b1}{modbus\+Aircon\+Mode\+Check}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{functions_8h_a894c9c43a6340a27ebd2e019ccf4852e}{holding\+Regs}} \mbox{[}2\mbox{]}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{functions_8h_ac9eb1f2e97f3e8f0253a86c62dbf7536}{input\+Regs}} \mbox{[}2\mbox{]}
+\item 
+bool \mbox{\hyperlink{functions_8h_a45baa4a7941e6515497f261701a2ef4a}{discrete\+Inputs}} \mbox{[}2\mbox{]}
+\item 
+char \mbox{\hyperlink{functions_8h_ae2f3c675bea341ca0e69e42191a970c9}{front\+Door\+Status}} \mbox{[}10\mbox{]}
+\item 
+char \mbox{\hyperlink{functions_8h_a80390fb973fe9e552d9ef15a1c428ca2}{back\+Door\+Status}} \mbox{[}10\mbox{]}
+\item 
+Json\+Document \mbox{\hyperlink{functions_8h_acc70417be3b0e73fb50f78212b2ee44b}{doc}}
+\item 
+Modbus\+Master \mbox{\hyperlink{functions_8h_a9f7da14569cf54a5633c163642e97dff}{modbus}}
+\item 
+\mbox{\hyperlink{structinputReg}{input\+Reg}} \mbox{\hyperlink{functions_8h_aeed490b5901c34b9ab4934c12043e5ca}{outdoor\+Temp}} = \{0, \mbox{\hyperlink{functions_8h_ac9eb1f2e97f3e8f0253a86c62dbf7536}{input\+Regs}}\mbox{[}2\mbox{]}, "{}Temperature outside\+: "{}, "{}C"{}\}
+\item 
+\mbox{\hyperlink{structinputReg}{input\+Reg}} \mbox{\hyperlink{functions_8h_ac481ad3ea1df9c91ad3accadab67b7a2}{extract\+Air\+Temp}} \{8, \mbox{\hyperlink{functions_8h_ac9eb1f2e97f3e8f0253a86c62dbf7536}{input\+Regs}}\mbox{[}2\mbox{]}, "{}Temperature inside\+: "{}, "{}C"{}\}
+\item 
+\mbox{\hyperlink{structinputReg}{input\+Reg}} \mbox{\hyperlink{functions_8h_ac35f88d09ef9b0ae881cced5783fcfd7}{humidity\+Outdoor}} \{154, \mbox{\hyperlink{functions_8h_ac9eb1f2e97f3e8f0253a86c62dbf7536}{input\+Regs}}\mbox{[}2\mbox{]}, "{}Humidity outside\+: "{}, "{}\% RH"{}\}
+\item 
+\mbox{\hyperlink{structinputReg}{input\+Reg}} \mbox{\hyperlink{functions_8h_af2a0012dec27681af717360e66370b43}{humidty\+Room}} \{22, \mbox{\hyperlink{functions_8h_ac9eb1f2e97f3e8f0253a86c62dbf7536}{input\+Regs}}\mbox{[}2\mbox{]}, "{}Humidty inside\+: "{}, "{}\% RH"{}\}
+\item 
+\mbox{\hyperlink{structinputReg}{input\+Reg}} \mbox{\hyperlink{functions_8h_a98e2a37d80f0c03b9dbfd3f6088472a2}{supply\+Air\+Press}} \{12, \mbox{\hyperlink{functions_8h_ac9eb1f2e97f3e8f0253a86c62dbf7536}{input\+Regs}}\mbox{[}2\mbox{]}, "{}Airpressure supplied to unit\+: "{}, "{}Pa"{}\}
+\item 
+\mbox{\hyperlink{structinputReg}{input\+Reg}} \mbox{\hyperlink{functions_8h_a9f72f35c4024c2e0d667ef31af0451a3}{exhaust\+Air\+Press}} \{13, \mbox{\hyperlink{functions_8h_ac9eb1f2e97f3e8f0253a86c62dbf7536}{input\+Regs}}\mbox{[}2\mbox{]}, "{}Exhaust airpressure\+: "{}, "{}Pa"{}\}
+\item 
+\mbox{\hyperlink{structinputReg}{input\+Reg}} \mbox{\hyperlink{functions_8h_a72fe4c78616d7c07ba0e79dc008695e5}{supply\+Air\+Flow}} \{14, \mbox{\hyperlink{functions_8h_ac9eb1f2e97f3e8f0253a86c62dbf7536}{input\+Regs}}\mbox{[}2\mbox{]}, "{}Air flow on supply\+: "{}, "{}m³/h"{}\}
+\item 
+\mbox{\hyperlink{structinputReg}{input\+Reg}} \mbox{\hyperlink{functions_8h_a4e6aba1f5124292e2b673f205d334b16}{exhaust\+Air\+Flow}} \{15, \mbox{\hyperlink{functions_8h_ac9eb1f2e97f3e8f0253a86c62dbf7536}{input\+Regs}}\mbox{[}2\mbox{]}, "{}Air flow fom exhaust\+: "{}, "{}m³/h"{}\}
+\item 
+\mbox{\hyperlink{structholdReg}{hold\+Reg}} \mbox{\hyperlink{functions_8h_adfc049dae72bed94ced8d39dad6d14dd}{air\+Unit\+Auto\+Mode}} \{367, \mbox{\hyperlink{functions_8h_a894c9c43a6340a27ebd2e019ccf4852e}{holding\+Regs}}\mbox{[}2\mbox{]}, "{}Aircon speed control\+: "{}\}
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{functions_8h_a308f1de59084e07c366b163590b3bbfe}{packet}}
+\item 
+char \mbox{\hyperlink{functions_8h_a8ac263a6b1bbb921fb3654e40015bd16}{json\+Buffer}} \mbox{[}1024\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{functions_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{functions_8h_ad4455691936f92fdd6c37566fc58ba1f}\index{functions.h@{functions.h}!BAUD\_RATE@{BAUD\_RATE}}
+\index{BAUD\_RATE@{BAUD\_RATE}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{BAUD\_RATE}{BAUD\_RATE}}
+{\footnotesize\ttfamily \label{functions_8h_ad4455691936f92fdd6c37566fc58ba1f} 
+\#define BAUD\+\_\+\+RATE~9600}
+
+\Hypertarget{functions_8h_a33a76bc034910d4d3b9242a493de7736}\index{functions.h@{functions.h}!MAX485\_DE@{MAX485\_DE}}
+\index{MAX485\_DE@{MAX485\_DE}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{MAX485\_DE}{MAX485\_DE}}
+{\footnotesize\ttfamily \label{functions_8h_a33a76bc034910d4d3b9242a493de7736} 
+\#define MAX485\+\_\+\+DE~5}
+
+\Hypertarget{functions_8h_ac74ee062bc05304c6ba3ae2ac0c63925}\index{functions.h@{functions.h}!MAX485\_RE\_NEG@{MAX485\_RE\_NEG}}
+\index{MAX485\_RE\_NEG@{MAX485\_RE\_NEG}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{MAX485\_RE\_NEG}{MAX485\_RE\_NEG}}
+{\footnotesize\ttfamily \label{functions_8h_ac74ee062bc05304c6ba3ae2ac0c63925} 
+\#define MAX485\+\_\+\+RE\+\_\+\+NEG~14}
+
+\Hypertarget{functions_8h_a1aef92ccc58f5b6eb11f9a32c8f1e3d6}\index{functions.h@{functions.h}!MODBUS\_SLAVE\_ID@{MODBUS\_SLAVE\_ID}}
+\index{MODBUS\_SLAVE\_ID@{MODBUS\_SLAVE\_ID}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{MODBUS\_SLAVE\_ID}{MODBUS\_SLAVE\_ID}}
+{\footnotesize\ttfamily \label{functions_8h_a1aef92ccc58f5b6eb11f9a32c8f1e3d6} 
+\#define MODBUS\+\_\+\+SLAVE\+\_\+\+ID~1}
+
+\Hypertarget{functions_8h_aa7089c01538b339ae745173c117f95b9}\index{functions.h@{functions.h}!RX\_PIN@{RX\_PIN}}
+\index{RX\_PIN@{RX\_PIN}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{RX\_PIN}{RX\_PIN}}
+{\footnotesize\ttfamily \label{functions_8h_aa7089c01538b339ae745173c117f95b9} 
+\#define RX\+\_\+\+PIN~36}
+
+\Hypertarget{functions_8h_a3bb17f5daa2b1eaef58c8aa2d989e27e}\index{functions.h@{functions.h}!TX\_PIN@{TX\_PIN}}
+\index{TX\_PIN@{TX\_PIN}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{TX\_PIN}{TX\_PIN}}
+{\footnotesize\ttfamily \label{functions_8h_a3bb17f5daa2b1eaef58c8aa2d989e27e} 
+\#define TX\+\_\+\+PIN~4}
+
+
+
+\label{doc-func-members}
+\Hypertarget{functions_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{functions_8h_a9e7232bbdc9e9ddec07979ed05de21a9}\index{functions.h@{functions.h}!airconDataReadPrint@{airconDataReadPrint}}
+\index{airconDataReadPrint@{airconDataReadPrint}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{airconDataReadPrint()}{airconDataReadPrint()}}
+{\footnotesize\ttfamily \label{functions_8h_a9e7232bbdc9e9ddec07979ed05de21a9} 
+void aircon\+Data\+Read\+Print (\begin{DoxyParamCaption}\item[{float}]{val}{, }\item[{String}]{id}{, }\item[{String}]{unit}{}\end{DoxyParamCaption})}
+
+\Hypertarget{functions_8h_af7517bdd27420a534c69b55fe5baf00d}\index{functions.h@{functions.h}!clearValBuffer@{clearValBuffer}}
+\index{clearValBuffer@{clearValBuffer}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{clearValBuffer()}{clearValBuffer()}}
+{\footnotesize\ttfamily \label{functions_8h_af7517bdd27420a534c69b55fe5baf00d} 
+void clear\+Val\+Buffer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{functions_8h_a602b0d79488408175817d7845c45178f}\index{functions.h@{functions.h}!dataToJson@{dataToJson}}
+\index{dataToJson@{dataToJson}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{dataToJson()}{dataToJson()}}
+{\footnotesize\ttfamily \label{functions_8h_a602b0d79488408175817d7845c45178f} 
+void data\+To\+Json (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{functions_8h_aef46f666200b23c39932a85ab1ac03b1}\index{functions.h@{functions.h}!modbusAirconModeCheck@{modbusAirconModeCheck}}
+\index{modbusAirconModeCheck@{modbusAirconModeCheck}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{modbusAirconModeCheck()}{modbusAirconModeCheck()}}
+{\footnotesize\ttfamily \label{functions_8h_aef46f666200b23c39932a85ab1ac03b1} 
+void modbus\+Aircon\+Mode\+Check (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{functions_8h_a60bdef55bb648f1a1be2599ddb893bbb}\index{functions.h@{functions.h}!modbusStartup@{modbusStartup}}
+\index{modbusStartup@{modbusStartup}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{modbusStartup()}{modbusStartup()}}
+{\footnotesize\ttfamily \label{functions_8h_a60bdef55bb648f1a1be2599ddb893bbb} 
+void modbus\+Startup (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{functions_8h_a33b535e84f654e423bb627b25b7b3759}\index{functions.h@{functions.h}!postTransmission@{postTransmission}}
+\index{postTransmission@{postTransmission}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{postTransmission()}{postTransmission()}}
+{\footnotesize\ttfamily \label{functions_8h_a33b535e84f654e423bb627b25b7b3759} 
+void post\+Transmission (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{functions_8h_a1c43d8a4afead0d0df29635242290377}\index{functions.h@{functions.h}!preTransmission@{preTransmission}}
+\index{preTransmission@{preTransmission}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{preTransmission()}{preTransmission()}}
+{\footnotesize\ttfamily \label{functions_8h_a1c43d8a4afead0d0df29635242290377} 
+void pre\+Transmission (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{functions_8h_abfa43d8e009406c47b53ddf9ca18000b}\index{functions.h@{functions.h}!readAirconData@{readAirconData}}
+\index{readAirconData@{readAirconData}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{readAirconData()}{readAirconData()}}
+{\footnotesize\ttfamily \label{functions_8h_abfa43d8e009406c47b53ddf9ca18000b} 
+void read\+Aircon\+Data (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{functions_8h_add9bb36f26e78d4a7dfa40104a04818a}\index{functions.h@{functions.h}!readInputRegister@{readInputRegister}}
+\index{readInputRegister@{readInputRegister}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{readInputRegister()}{readInputRegister()}}
+{\footnotesize\ttfamily \label{functions_8h_add9bb36f26e78d4a7dfa40104a04818a} 
+uint16\+\_\+t read\+Input\+Register (\begin{DoxyParamCaption}\item[{int}]{reg}{}\end{DoxyParamCaption})}
+
+\Hypertarget{functions_8h_a21e3bbf9fc0d77aec1e168538db51e66}\index{functions.h@{functions.h}!writeHoldingRegister@{writeHoldingRegister}}
+\index{writeHoldingRegister@{writeHoldingRegister}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{writeHoldingRegister()}{writeHoldingRegister()}}
+{\footnotesize\ttfamily \label{functions_8h_a21e3bbf9fc0d77aec1e168538db51e66} 
+void write\+Holding\+Register (\begin{DoxyParamCaption}\item[{int}]{reg}{, }\item[{uint16\+\_\+t}]{val}{}\end{DoxyParamCaption})}
+
+
+
+\label{doc-var-members}
+\Hypertarget{functions_8h_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{functions_8h_adfc049dae72bed94ced8d39dad6d14dd}\index{functions.h@{functions.h}!airUnitAutoMode@{airUnitAutoMode}}
+\index{airUnitAutoMode@{airUnitAutoMode}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{airUnitAutoMode}{airUnitAutoMode}}
+{\footnotesize\ttfamily \label{functions_8h_adfc049dae72bed94ced8d39dad6d14dd} 
+\mbox{\hyperlink{structholdReg}{hold\+Reg}} air\+Unit\+Auto\+Mode \{367, \mbox{\hyperlink{functions_8h_a894c9c43a6340a27ebd2e019ccf4852e}{holding\+Regs}}\mbox{[}2\mbox{]}, "{}Aircon speed control\+: "{}\}}
+
+\Hypertarget{functions_8h_a80390fb973fe9e552d9ef15a1c428ca2}\index{functions.h@{functions.h}!backDoorStatus@{backDoorStatus}}
+\index{backDoorStatus@{backDoorStatus}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{backDoorStatus}{backDoorStatus}}
+{\footnotesize\ttfamily \label{functions_8h_a80390fb973fe9e552d9ef15a1c428ca2} 
+char back\+Door\+Status\mbox{[}10\mbox{]}}
+
+\Hypertarget{functions_8h_a45baa4a7941e6515497f261701a2ef4a}\index{functions.h@{functions.h}!discreteInputs@{discreteInputs}}
+\index{discreteInputs@{discreteInputs}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{discreteInputs}{discreteInputs}}
+{\footnotesize\ttfamily \label{functions_8h_a45baa4a7941e6515497f261701a2ef4a} 
+bool discrete\+Inputs\mbox{[}2\mbox{]}}
+
+\Hypertarget{functions_8h_acc70417be3b0e73fb50f78212b2ee44b}\index{functions.h@{functions.h}!doc@{doc}}
+\index{doc@{doc}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{doc}{doc}}
+{\footnotesize\ttfamily \label{functions_8h_acc70417be3b0e73fb50f78212b2ee44b} 
+Json\+Document doc}
+
+\Hypertarget{functions_8h_a4e6aba1f5124292e2b673f205d334b16}\index{functions.h@{functions.h}!exhaustAirFlow@{exhaustAirFlow}}
+\index{exhaustAirFlow@{exhaustAirFlow}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{exhaustAirFlow}{exhaustAirFlow}}
+{\footnotesize\ttfamily \label{functions_8h_a4e6aba1f5124292e2b673f205d334b16} 
+\mbox{\hyperlink{structinputReg}{input\+Reg}} exhaust\+Air\+Flow \{15, \mbox{\hyperlink{functions_8h_ac9eb1f2e97f3e8f0253a86c62dbf7536}{input\+Regs}}\mbox{[}2\mbox{]}, "{}Air flow fom exhaust\+: "{}, "{}m³/h"{}\}}
+
+\Hypertarget{functions_8h_a9f72f35c4024c2e0d667ef31af0451a3}\index{functions.h@{functions.h}!exhaustAirPress@{exhaustAirPress}}
+\index{exhaustAirPress@{exhaustAirPress}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{exhaustAirPress}{exhaustAirPress}}
+{\footnotesize\ttfamily \label{functions_8h_a9f72f35c4024c2e0d667ef31af0451a3} 
+\mbox{\hyperlink{structinputReg}{input\+Reg}} exhaust\+Air\+Press \{13, \mbox{\hyperlink{functions_8h_ac9eb1f2e97f3e8f0253a86c62dbf7536}{input\+Regs}}\mbox{[}2\mbox{]}, "{}Exhaust airpressure\+: "{}, "{}Pa"{}\}}
+
+\Hypertarget{functions_8h_ac481ad3ea1df9c91ad3accadab67b7a2}\index{functions.h@{functions.h}!extractAirTemp@{extractAirTemp}}
+\index{extractAirTemp@{extractAirTemp}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{extractAirTemp}{extractAirTemp}}
+{\footnotesize\ttfamily \label{functions_8h_ac481ad3ea1df9c91ad3accadab67b7a2} 
+\mbox{\hyperlink{structinputReg}{input\+Reg}} extract\+Air\+Temp \{8, \mbox{\hyperlink{functions_8h_ac9eb1f2e97f3e8f0253a86c62dbf7536}{input\+Regs}}\mbox{[}2\mbox{]}, "{}Temperature inside\+: "{}, "{}C"{}\}}
+
+\Hypertarget{functions_8h_ae2f3c675bea341ca0e69e42191a970c9}\index{functions.h@{functions.h}!frontDoorStatus@{frontDoorStatus}}
+\index{frontDoorStatus@{frontDoorStatus}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{frontDoorStatus}{frontDoorStatus}}
+{\footnotesize\ttfamily \label{functions_8h_ae2f3c675bea341ca0e69e42191a970c9} 
+char front\+Door\+Status\mbox{[}10\mbox{]}}
+
+\Hypertarget{functions_8h_a894c9c43a6340a27ebd2e019ccf4852e}\index{functions.h@{functions.h}!holdingRegs@{holdingRegs}}
+\index{holdingRegs@{holdingRegs}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{holdingRegs}{holdingRegs}}
+{\footnotesize\ttfamily \label{functions_8h_a894c9c43a6340a27ebd2e019ccf4852e} 
+uint16\+\_\+t holding\+Regs\mbox{[}2\mbox{]}}
+
+\Hypertarget{functions_8h_ac35f88d09ef9b0ae881cced5783fcfd7}\index{functions.h@{functions.h}!humidityOutdoor@{humidityOutdoor}}
+\index{humidityOutdoor@{humidityOutdoor}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{humidityOutdoor}{humidityOutdoor}}
+{\footnotesize\ttfamily \label{functions_8h_ac35f88d09ef9b0ae881cced5783fcfd7} 
+\mbox{\hyperlink{structinputReg}{input\+Reg}} humidity\+Outdoor \{154, \mbox{\hyperlink{functions_8h_ac9eb1f2e97f3e8f0253a86c62dbf7536}{input\+Regs}}\mbox{[}2\mbox{]}, "{}Humidity outside\+: "{}, "{}\% RH"{}\}}
+
+\Hypertarget{functions_8h_af2a0012dec27681af717360e66370b43}\index{functions.h@{functions.h}!humidtyRoom@{humidtyRoom}}
+\index{humidtyRoom@{humidtyRoom}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{humidtyRoom}{humidtyRoom}}
+{\footnotesize\ttfamily \label{functions_8h_af2a0012dec27681af717360e66370b43} 
+\mbox{\hyperlink{structinputReg}{input\+Reg}} humidty\+Room \{22, \mbox{\hyperlink{functions_8h_ac9eb1f2e97f3e8f0253a86c62dbf7536}{input\+Regs}}\mbox{[}2\mbox{]}, "{}Humidty inside\+: "{}, "{}\% RH"{}\}}
+
+\Hypertarget{functions_8h_ac9eb1f2e97f3e8f0253a86c62dbf7536}\index{functions.h@{functions.h}!inputRegs@{inputRegs}}
+\index{inputRegs@{inputRegs}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{inputRegs}{inputRegs}}
+{\footnotesize\ttfamily \label{functions_8h_ac9eb1f2e97f3e8f0253a86c62dbf7536} 
+uint16\+\_\+t input\+Regs\mbox{[}2\mbox{]}}
+
+\Hypertarget{functions_8h_a8ac263a6b1bbb921fb3654e40015bd16}\index{functions.h@{functions.h}!jsonBuffer@{jsonBuffer}}
+\index{jsonBuffer@{jsonBuffer}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{jsonBuffer}{jsonBuffer}}
+{\footnotesize\ttfamily \label{functions_8h_a8ac263a6b1bbb921fb3654e40015bd16} 
+char json\+Buffer\mbox{[}1024\mbox{]}}
+
+\Hypertarget{functions_8h_a9f7da14569cf54a5633c163642e97dff}\index{functions.h@{functions.h}!modbus@{modbus}}
+\index{modbus@{modbus}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{modbus}{modbus}}
+{\footnotesize\ttfamily \label{functions_8h_a9f7da14569cf54a5633c163642e97dff} 
+Modbus\+Master modbus}
+
+\Hypertarget{functions_8h_aeed490b5901c34b9ab4934c12043e5ca}\index{functions.h@{functions.h}!outdoorTemp@{outdoorTemp}}
+\index{outdoorTemp@{outdoorTemp}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{outdoorTemp}{outdoorTemp}}
+{\footnotesize\ttfamily \label{functions_8h_aeed490b5901c34b9ab4934c12043e5ca} 
+\mbox{\hyperlink{structinputReg}{input\+Reg}} outdoor\+Temp = \{0, \mbox{\hyperlink{functions_8h_ac9eb1f2e97f3e8f0253a86c62dbf7536}{input\+Regs}}\mbox{[}2\mbox{]}, "{}Temperature outside\+: "{}, "{}C"{}\}}
+
+\Hypertarget{functions_8h_a308f1de59084e07c366b163590b3bbfe}\index{functions.h@{functions.h}!packet@{packet}}
+\index{packet@{packet}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{packet}{packet}}
+{\footnotesize\ttfamily \label{functions_8h_a308f1de59084e07c366b163590b3bbfe} 
+const char\texorpdfstring{$\ast$}{*} packet}
+
+\Hypertarget{functions_8h_a72fe4c78616d7c07ba0e79dc008695e5}\index{functions.h@{functions.h}!supplyAirFlow@{supplyAirFlow}}
+\index{supplyAirFlow@{supplyAirFlow}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{supplyAirFlow}{supplyAirFlow}}
+{\footnotesize\ttfamily \label{functions_8h_a72fe4c78616d7c07ba0e79dc008695e5} 
+\mbox{\hyperlink{structinputReg}{input\+Reg}} supply\+Air\+Flow \{14, \mbox{\hyperlink{functions_8h_ac9eb1f2e97f3e8f0253a86c62dbf7536}{input\+Regs}}\mbox{[}2\mbox{]}, "{}Air flow on supply\+: "{}, "{}m³/h"{}\}}
+
+\Hypertarget{functions_8h_a98e2a37d80f0c03b9dbfd3f6088472a2}\index{functions.h@{functions.h}!supplyAirPress@{supplyAirPress}}
+\index{supplyAirPress@{supplyAirPress}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{supplyAirPress}{supplyAirPress}}
+{\footnotesize\ttfamily \label{functions_8h_a98e2a37d80f0c03b9dbfd3f6088472a2} 
+\mbox{\hyperlink{structinputReg}{input\+Reg}} supply\+Air\+Press \{12, \mbox{\hyperlink{functions_8h_ac9eb1f2e97f3e8f0253a86c62dbf7536}{input\+Regs}}\mbox{[}2\mbox{]}, "{}Airpressure supplied to unit\+: "{}, "{}Pa"{}\}}
+

@@ -1,0 +1,135 @@
+\doxysection{include/mqtt.h File Reference}
+\hypertarget{mqtt_8h}{}\label{mqtt_8h}\index{include/mqtt.h@{include/mqtt.h}}
+{\ttfamily \#include $<$ETH.\+h$>$}\newline
+{\ttfamily \#include $<$Wi\+Fi.\+h$>$}\newline
+{\ttfamily \#include $<$SPI.\+h$>$}\newline
+{\ttfamily \#include $<$Pub\+Sub\+Client.\+h$>$}\newline
+{\ttfamily \#include $<$functions.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{mqtt_8h_a8b8829259deb95b55d24ef37294131c3}{ETH\+\_\+\+PHY\+\_\+\+TYPE}}~ETH\+\_\+\+PHY\+\_\+\+LAN8720
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Pub\+Sub\+Client \mbox{\hyperlink{mqtt_8h_aee63e84c606cfaefce454689113c636c}{client}} (\mbox{\hyperlink{mqtt_8h_abd77e757e4b3bb6f1e4b42b21ea9e040}{esp\+Client}})
+\item 
+void \mbox{\hyperlink{mqtt_8h_a809f04a8ce2340560609f6fb2cb82d9e}{connect\+MQTT}} ()
+\item 
+void \mbox{\hyperlink{mqtt_8h_ac093c36743c080f3275153417463982c}{Wi\+Fi\+Event}} (arduino\+\_\+event\+\_\+id\+\_\+t event)
+\item 
+void \mbox{\hyperlink{mqtt_8h_a67cddaa94a0b01a70efbde0f96c34e36}{network\+Begin}} ()
+\item 
+void \mbox{\hyperlink{mqtt_8h_a673f3205e2f17d1531578b777786c027}{connect\+Mqtt}} ()
+\item 
+void \mbox{\hyperlink{mqtt_8h_a6c01e814131babb9727cabb6854b751c}{json\+Publish}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+Wi\+Fi\+Client \mbox{\hyperlink{mqtt_8h_abd77e757e4b3bb6f1e4b42b21ea9e040}{esp\+Client}}
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{mqtt_8h_af7c6bd130c027a155eb2cc3e9b6d245f}{mqtt\+\_\+client\+\_\+id}} = "{}ESP32\+Publisher"{}
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{mqtt_8h_a4ed7b4c951621dbec76099594f64d249}{topic}} = "{}sp\+Bv1.\+0/officeb/DDATA/ventilationchamber2/olimextemp"{}
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{mqtt_8h_ae62fa8557ef4586408dcbe2f1a09e839}{mqtt\+\_\+server}} = "{}10.\+42.\+0.\+1"{}
+\item 
+const int \mbox{\hyperlink{mqtt_8h_ae4f28c882f3fb17a47d7bfea3dd5cc02}{mqtt\+\_\+port}} = 1883
+\item 
+bool \mbox{\hyperlink{mqtt_8h_ac84beb1a79f197fb28f9762c774e856c}{eth\+\_\+connected}} = false
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{mqtt_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{mqtt_8h_a8b8829259deb95b55d24ef37294131c3}\index{mqtt.h@{mqtt.h}!ETH\_PHY\_TYPE@{ETH\_PHY\_TYPE}}
+\index{ETH\_PHY\_TYPE@{ETH\_PHY\_TYPE}!mqtt.h@{mqtt.h}}
+\doxysubsubsection{\texorpdfstring{ETH\_PHY\_TYPE}{ETH\_PHY\_TYPE}}
+{\footnotesize\ttfamily \label{mqtt_8h_a8b8829259deb95b55d24ef37294131c3} 
+\#define ETH\+\_\+\+PHY\+\_\+\+TYPE~ETH\+\_\+\+PHY\+\_\+\+LAN8720}
+
+
+
+\label{doc-func-members}
+\Hypertarget{mqtt_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{mqtt_8h_aee63e84c606cfaefce454689113c636c}\index{mqtt.h@{mqtt.h}!client@{client}}
+\index{client@{client}!mqtt.h@{mqtt.h}}
+\doxysubsubsection{\texorpdfstring{client()}{client()}}
+{\footnotesize\ttfamily \label{mqtt_8h_aee63e84c606cfaefce454689113c636c} 
+Pub\+Sub\+Client client (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{mqtt_8h_abd77e757e4b3bb6f1e4b42b21ea9e040}{esp\+Client}}}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{mqtt_8h_a809f04a8ce2340560609f6fb2cb82d9e}\index{mqtt.h@{mqtt.h}!connectMQTT@{connectMQTT}}
+\index{connectMQTT@{connectMQTT}!mqtt.h@{mqtt.h}}
+\doxysubsubsection{\texorpdfstring{connectMQTT()}{connectMQTT()}}
+{\footnotesize\ttfamily \label{mqtt_8h_a809f04a8ce2340560609f6fb2cb82d9e} 
+void connect\+MQTT (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{mqtt_8h_a673f3205e2f17d1531578b777786c027}\index{mqtt.h@{mqtt.h}!connectMqtt@{connectMqtt}}
+\index{connectMqtt@{connectMqtt}!mqtt.h@{mqtt.h}}
+\doxysubsubsection{\texorpdfstring{connectMqtt()}{connectMqtt()}}
+{\footnotesize\ttfamily \label{mqtt_8h_a673f3205e2f17d1531578b777786c027} 
+void connect\+Mqtt (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{mqtt_8h_a6c01e814131babb9727cabb6854b751c}\index{mqtt.h@{mqtt.h}!jsonPublish@{jsonPublish}}
+\index{jsonPublish@{jsonPublish}!mqtt.h@{mqtt.h}}
+\doxysubsubsection{\texorpdfstring{jsonPublish()}{jsonPublish()}}
+{\footnotesize\ttfamily \label{mqtt_8h_a6c01e814131babb9727cabb6854b751c} 
+void json\+Publish (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{mqtt_8h_a67cddaa94a0b01a70efbde0f96c34e36}\index{mqtt.h@{mqtt.h}!networkBegin@{networkBegin}}
+\index{networkBegin@{networkBegin}!mqtt.h@{mqtt.h}}
+\doxysubsubsection{\texorpdfstring{networkBegin()}{networkBegin()}}
+{\footnotesize\ttfamily \label{mqtt_8h_a67cddaa94a0b01a70efbde0f96c34e36} 
+void network\+Begin (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{mqtt_8h_ac093c36743c080f3275153417463982c}\index{mqtt.h@{mqtt.h}!WiFiEvent@{WiFiEvent}}
+\index{WiFiEvent@{WiFiEvent}!mqtt.h@{mqtt.h}}
+\doxysubsubsection{\texorpdfstring{WiFiEvent()}{WiFiEvent()}}
+{\footnotesize\ttfamily \label{mqtt_8h_ac093c36743c080f3275153417463982c} 
+void Wi\+Fi\+Event (\begin{DoxyParamCaption}\item[{arduino\+\_\+event\+\_\+id\+\_\+t}]{event}{}\end{DoxyParamCaption})}
+
+
+
+\label{doc-var-members}
+\Hypertarget{mqtt_8h_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{mqtt_8h_abd77e757e4b3bb6f1e4b42b21ea9e040}\index{mqtt.h@{mqtt.h}!espClient@{espClient}}
+\index{espClient@{espClient}!mqtt.h@{mqtt.h}}
+\doxysubsubsection{\texorpdfstring{espClient}{espClient}}
+{\footnotesize\ttfamily \label{mqtt_8h_abd77e757e4b3bb6f1e4b42b21ea9e040} 
+Wi\+Fi\+Client esp\+Client}
+
+\Hypertarget{mqtt_8h_ac84beb1a79f197fb28f9762c774e856c}\index{mqtt.h@{mqtt.h}!eth\_connected@{eth\_connected}}
+\index{eth\_connected@{eth\_connected}!mqtt.h@{mqtt.h}}
+\doxysubsubsection{\texorpdfstring{eth\_connected}{eth\_connected}}
+{\footnotesize\ttfamily \label{mqtt_8h_ac84beb1a79f197fb28f9762c774e856c} 
+bool eth\+\_\+connected = false}
+
+\Hypertarget{mqtt_8h_af7c6bd130c027a155eb2cc3e9b6d245f}\index{mqtt.h@{mqtt.h}!mqtt\_client\_id@{mqtt\_client\_id}}
+\index{mqtt\_client\_id@{mqtt\_client\_id}!mqtt.h@{mqtt.h}}
+\doxysubsubsection{\texorpdfstring{mqtt\_client\_id}{mqtt\_client\_id}}
+{\footnotesize\ttfamily \label{mqtt_8h_af7c6bd130c027a155eb2cc3e9b6d245f} 
+const char\texorpdfstring{$\ast$}{*} mqtt\+\_\+client\+\_\+id = "{}ESP32\+Publisher"{}}
+
+\Hypertarget{mqtt_8h_ae4f28c882f3fb17a47d7bfea3dd5cc02}\index{mqtt.h@{mqtt.h}!mqtt\_port@{mqtt\_port}}
+\index{mqtt\_port@{mqtt\_port}!mqtt.h@{mqtt.h}}
+\doxysubsubsection{\texorpdfstring{mqtt\_port}{mqtt\_port}}
+{\footnotesize\ttfamily \label{mqtt_8h_ae4f28c882f3fb17a47d7bfea3dd5cc02} 
+const int mqtt\+\_\+port = 1883}
+
+\Hypertarget{mqtt_8h_ae62fa8557ef4586408dcbe2f1a09e839}\index{mqtt.h@{mqtt.h}!mqtt\_server@{mqtt\_server}}
+\index{mqtt\_server@{mqtt\_server}!mqtt.h@{mqtt.h}}
+\doxysubsubsection{\texorpdfstring{mqtt\_server}{mqtt\_server}}
+{\footnotesize\ttfamily \label{mqtt_8h_ae62fa8557ef4586408dcbe2f1a09e839} 
+const char\texorpdfstring{$\ast$}{*} mqtt\+\_\+server = "{}10.\+42.\+0.\+1"{}}
+
+\Hypertarget{mqtt_8h_a4ed7b4c951621dbec76099594f64d249}\index{mqtt.h@{mqtt.h}!topic@{topic}}
+\index{topic@{topic}!mqtt.h@{mqtt.h}}
+\doxysubsubsection{\texorpdfstring{topic}{topic}}
+{\footnotesize\ttfamily \label{mqtt_8h_a4ed7b4c951621dbec76099594f64d249} 
+const char\texorpdfstring{$\ast$}{*} topic = "{}sp\+Bv1.\+0/officeb/DDATA/ventilationchamber2/olimextemp"{}}
+
