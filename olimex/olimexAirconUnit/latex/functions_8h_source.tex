@@ -26,226 +26,225 @@
 \DoxyCodeLine{00022\ \textcolor{comment}{//\ Create\ Modbus\ master\ object}}
 \DoxyCodeLine{00023\ ModbusMaster\ \mbox{\hyperlink{functions_8h_a9f7da14569cf54a5633c163642e97dff}{modbus}};}
 \DoxyCodeLine{00024\ }
-\DoxyCodeLine{00025\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structinputReg}{inputReg}}}
-\DoxyCodeLine{00026\ \{}
-\DoxyCodeLine{00027\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structinputReg_a1ed337ef3c16df7b90c0d42f9e5a865c}{regAddress}};}
-\DoxyCodeLine{00028\ \ \ uint16\_t\ \mbox{\hyperlink{structinputReg_a26c6b8da2522a3b943649ad23ca86446}{inputRegs}};}
-\DoxyCodeLine{00029\ \ \ String\ \mbox{\hyperlink{structinputReg_a8994f66a343679bf4ba83933a1c06fa2}{id}};}
-\DoxyCodeLine{00030\ \ \ String\ \mbox{\hyperlink{structinputReg_ac1a7eb3d89ecb3c0167448dd3f5f4728}{unit}};}
-\DoxyCodeLine{00031\ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{structinputReg_aeb15c759d66bf9ecba7ba46d09118d8e}{value}};}
-\DoxyCodeLine{00032\ \};\ \ }
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00034\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structholdReg}{holdReg}}}
-\DoxyCodeLine{00035\ \{}
-\DoxyCodeLine{00036\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structholdReg_a595204bb8891581009765ab3ba108caa}{regAddress}};}
-\DoxyCodeLine{00037\ \ \ uint16\_t\ \mbox{\hyperlink{structholdReg_a016821a79a273a42412b51e3ff65c8d8}{holdingRegs}};}
-\DoxyCodeLine{00038\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{structholdReg_a5cabdb5ebb3ef98848dc0c5411fce23c}{name}};}
-\DoxyCodeLine{00039\ \};}
-\DoxyCodeLine{00040\ }
-\DoxyCodeLine{00041\ \mbox{\hyperlink{structinputReg}{inputReg}}\ \mbox{\hyperlink{functions_8h_aeed490b5901c34b9ab4934c12043e5ca}{outdoorTemp}}\ =\ \{0,\ \mbox{\hyperlink{functions_8h_ac9eb1f2e97f3e8f0253a86c62dbf7536}{inputRegs}}[2],\ \textcolor{stringliteral}{"{}Temperature\ outside:\ "{}},\ \textcolor{stringliteral}{"{}C"{}}\};}
-\DoxyCodeLine{00042\ \mbox{\hyperlink{structinputReg}{inputReg}}\ \mbox{\hyperlink{functions_8h_ac481ad3ea1df9c91ad3accadab67b7a2}{extractAirTemp}}\{8,\ \mbox{\hyperlink{functions_8h_ac9eb1f2e97f3e8f0253a86c62dbf7536}{inputRegs}}[2],\ \textcolor{stringliteral}{"{}Temperature\ inside:\ "{}},\ \textcolor{stringliteral}{"{}C"{}}\};}
-\DoxyCodeLine{00043\ \mbox{\hyperlink{structinputReg}{inputReg}}\ \mbox{\hyperlink{functions_8h_ac35f88d09ef9b0ae881cced5783fcfd7}{humidityOutdoor}}\{154,\ \mbox{\hyperlink{functions_8h_ac9eb1f2e97f3e8f0253a86c62dbf7536}{inputRegs}}[2],\ \textcolor{stringliteral}{"{}Humidity\ outside:\ "{}},\ \textcolor{stringliteral}{"{}\%\ RH"{}}\};}
-\DoxyCodeLine{00044\ \mbox{\hyperlink{structinputReg}{inputReg}}\ \mbox{\hyperlink{functions_8h_af2a0012dec27681af717360e66370b43}{humidtyRoom}}\{22,\ \mbox{\hyperlink{functions_8h_ac9eb1f2e97f3e8f0253a86c62dbf7536}{inputRegs}}[2],\ \textcolor{stringliteral}{"{}Humidty\ inside:\ "{}},\ \textcolor{stringliteral}{"{}\%\ RH"{}}\};}
-\DoxyCodeLine{00045\ \mbox{\hyperlink{structinputReg}{inputReg}}\ \mbox{\hyperlink{functions_8h_a98e2a37d80f0c03b9dbfd3f6088472a2}{supplyAirPress}}\{12,\ \mbox{\hyperlink{functions_8h_ac9eb1f2e97f3e8f0253a86c62dbf7536}{inputRegs}}[2],\ \textcolor{stringliteral}{"{}Airpressure\ supplied\ to\ unit:\ "{}},\ \textcolor{stringliteral}{"{}Pa"{}}\};}
-\DoxyCodeLine{00046\ \mbox{\hyperlink{structinputReg}{inputReg}}\ \mbox{\hyperlink{functions_8h_a9f72f35c4024c2e0d667ef31af0451a3}{exhaustAirPress}}\{13,\ \mbox{\hyperlink{functions_8h_ac9eb1f2e97f3e8f0253a86c62dbf7536}{inputRegs}}[2],\ \textcolor{stringliteral}{"{}Exhaust\ airpressure:\ "{}},\ \textcolor{stringliteral}{"{}Pa"{}}\};}
-\DoxyCodeLine{00047\ \mbox{\hyperlink{structinputReg}{inputReg}}\ \mbox{\hyperlink{functions_8h_a72fe4c78616d7c07ba0e79dc008695e5}{supplyAirFlow}}\{14,\ \mbox{\hyperlink{functions_8h_ac9eb1f2e97f3e8f0253a86c62dbf7536}{inputRegs}}[2],\ \textcolor{stringliteral}{"{}Air\ flow\ on\ supply:\ "{}},\ \textcolor{stringliteral}{"{}m³/h"{}}\};}
-\DoxyCodeLine{00048\ \mbox{\hyperlink{structinputReg}{inputReg}}\ \mbox{\hyperlink{functions_8h_a4e6aba1f5124292e2b673f205d334b16}{exhaustAirFlow}}\{15,\ \mbox{\hyperlink{functions_8h_ac9eb1f2e97f3e8f0253a86c62dbf7536}{inputRegs}}[2],\ \textcolor{stringliteral}{"{}Air\ flow\ fom\ exhaust:\ "{}},\ \textcolor{stringliteral}{"{}m³/h"{}}\};}
-\DoxyCodeLine{00049\ \mbox{\hyperlink{structholdReg}{holdReg}}\ \mbox{\hyperlink{functions_8h_adfc049dae72bed94ced8d39dad6d14dd}{airUnitAutoMode}}\{367,\ \mbox{\hyperlink{functions_8h_a894c9c43a6340a27ebd2e019ccf4852e}{holdingRegs}}[2],\ \textcolor{stringliteral}{"{}Aircon\ speed\ control:\ "{}}\};}
-\DoxyCodeLine{00050\ \textcolor{comment}{//inputReg\ co2Sensor\{16,\ inputRegs[20],\ "{}CO2\ sensor"{}\};\ //Register\ not\ available\ on\ aircon\ unit}}
-\DoxyCodeLine{00051\ }
-\DoxyCodeLine{00052\ }
-\DoxyCodeLine{00053\ \textcolor{comment}{/*}}
-\DoxyCodeLine{00054\ \textcolor{comment}{Reference\ values\ for\ modbus\ simulation:}}
-\DoxyCodeLine{00055\ \textcolor{comment}{Input\ register\ values\ (3x)}}
-\DoxyCodeLine{00056\ \textcolor{comment}{1\ =\ 50}}
-\DoxyCodeLine{00057\ \textcolor{comment}{9\ =\ 230}}
-\DoxyCodeLine{00058\ \textcolor{comment}{155\ =\ 560}}
-\DoxyCodeLine{00059\ \textcolor{comment}{23\ =\ 500}}
-\DoxyCodeLine{00060\ \textcolor{comment}{13\ =\ 260}}
-\DoxyCodeLine{00061\ \textcolor{comment}{14\ =\ 240}}
-\DoxyCodeLine{00062\ \textcolor{comment}{15\ =\ 490}}
-\DoxyCodeLine{00063\ \textcolor{comment}{16\ =\ 470}}
-\DoxyCodeLine{00064\ \textcolor{comment}{*/}}
-\DoxyCodeLine{00065\ }
-\DoxyCodeLine{00066\ \textcolor{comment}{//\ Function\ to\ prepare\ for\ data\ transmission}}
-\DoxyCodeLine{00067\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_8h_a1c43d8a4afead0d0df29635242290377}{preTransmission}}()\ \{}
-\DoxyCodeLine{00068\ \ \ \ \ digitalWrite(\mbox{\hyperlink{functions_8h_ac74ee062bc05304c6ba3ae2ac0c63925}{MAX485\_RE\_NEG}},\ HIGH);\ \ \textcolor{comment}{//\ Disable\ receiver}}
-\DoxyCodeLine{00069\ \ \ \ \ digitalWrite(\mbox{\hyperlink{functions_8h_a33a76bc034910d4d3b9242a493de7736}{MAX485\_DE}},\ HIGH);\ \ \ \ \ \ \textcolor{comment}{//\ Enable\ driver}}
-\DoxyCodeLine{00070\ \}}
-\DoxyCodeLine{00071\ }
-\DoxyCodeLine{00072\ \textcolor{comment}{//\ Function\ to\ clean\ up\ after\ data\ transmission}}
-\DoxyCodeLine{00073\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_8h_a33b535e84f654e423bb627b25b7b3759}{postTransmission}}()\ \{}
-\DoxyCodeLine{00074\ \ \ \ \ digitalWrite(\mbox{\hyperlink{functions_8h_ac74ee062bc05304c6ba3ae2ac0c63925}{MAX485\_RE\_NEG}},\ LOW);\ \ \ \textcolor{comment}{//\ Enable\ receiver}}
-\DoxyCodeLine{00075\ \ \ \ \ digitalWrite(\mbox{\hyperlink{functions_8h_a33a76bc034910d4d3b9242a493de7736}{MAX485\_DE}},\ LOW);\ \ \ \ \ \ \ \textcolor{comment}{//\ Disable\ driver}}
-\DoxyCodeLine{00076\ \}}
-\DoxyCodeLine{00077\ }
-\DoxyCodeLine{00078\ }
-\DoxyCodeLine{00079\ \textcolor{comment}{//\ Function\ to\ read\ input\ registers\ (e.g.,\ motor\ RPM)}}
-\DoxyCodeLine{00080\ uint16\_t\ \mbox{\hyperlink{functions_8h_add9bb36f26e78d4a7dfa40104a04818a}{readInputRegister}}(\textcolor{keywordtype}{int}\ reg)\ \{}
-\DoxyCodeLine{00081\ \ \ \ \ uint16\_t\ val;}
-\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{functions_8h_a9f7da14569cf54a5633c163642e97dff}{modbus}}.readInputRegisters(reg,\ 1)\ ==\ \mbox{\hyperlink{functions_8h_a9f7da14569cf54a5633c163642e97dff}{modbus}}.ku8MBSuccess)\ \{}
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Serial.println(modbus.getResponseBuffer(0));}}
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ val\ =\ \mbox{\hyperlink{functions_8h_a9f7da14569cf54a5633c163642e97dff}{modbus}}.getResponseBuffer(0);}
-\DoxyCodeLine{00085\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}ERROR:\ Failed\ to\ read\ input\ registers"{}});}
-\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ val\ =\ 8009;\ \textcolor{comment}{//\ Set\ error\ value}}
-\DoxyCodeLine{00088\ \ \ \ \ \}}
-\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordflow}{return}\ val;}
-\DoxyCodeLine{00090\ \}}
-\DoxyCodeLine{00091\ }
-\DoxyCodeLine{00092\ \textcolor{comment}{//\ Function\ to\ write\ holding\ registers\ (e.g.,\ setpoints)}}
-\DoxyCodeLine{00093\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_8h_a21e3bbf9fc0d77aec1e168538db51e66}{writeHoldingRegister}}(\textcolor{keywordtype}{int}\ reg,\ uint16\_t\ val\ )\ \{}
-\DoxyCodeLine{00094\ \ \ \ \ \textcolor{comment}{//\ Prepare\ setpoint\ values}}
-\DoxyCodeLine{00095\ \ \ \ \ \textcolor{comment}{//\ Load\ transmit\ buffer\ with\ setpoint\ values}}
-\DoxyCodeLine{00096\ \ \ \ \ \mbox{\hyperlink{functions_8h_a9f7da14569cf54a5633c163642e97dff}{modbus}}.setTransmitBuffer(0,\ val);}
-\DoxyCodeLine{00097\ \ \ \ \ \textcolor{comment}{//\ Attempt\ to\ write\ 2\ holding\ registers\ starting\ at\ address\ 3}}
-\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{functions_8h_a9f7da14569cf54a5633c163642e97dff}{modbus}}.writeSingleRegister(reg,\ 1)\ ==\ \mbox{\hyperlink{functions_8h_a9f7da14569cf54a5633c163642e97dff}{modbus}}.ku8MBSuccess)\ \{}
-\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Holding\ Registers\ Updated\ Successfully"{}});}
-\DoxyCodeLine{00100\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}ERROR:\ Failed\ to\ write\ holding\ registers"{}});}
-\DoxyCodeLine{00102\ \ \ \ \ \}}
-\DoxyCodeLine{00103\ \}}
-\DoxyCodeLine{00104\ }
-\DoxyCodeLine{00105\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_8h_a9e7232bbdc9e9ddec07979ed05de21a9}{airconDataReadPrint}}(\textcolor{keywordtype}{float}\ val,\ String\ \textcolor{keywordtype}{id},\ String\ unit)\{}
-\DoxyCodeLine{00106\ \ \ \ \ Serial.print(\textcolor{keywordtype}{id});}
-\DoxyCodeLine{00107\ \ \ \ \ Serial.print(val);}
-\DoxyCodeLine{00108\ \ \ \ \ Serial.print(unit);}
-\DoxyCodeLine{00109\ \ \ \ \ Serial.println();}
-\DoxyCodeLine{00110\ \ \ \ \ delay(500);}
-\DoxyCodeLine{00111\ \}}
-\DoxyCodeLine{00112\ }
-\DoxyCodeLine{00113\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_8h_abfa43d8e009406c47b53ddf9ca18000b}{readAirconData}}()\{\ \ \ \ \ \ }
-\DoxyCodeLine{00114\ \ \ \ \ \textcolor{comment}{//float\ signedRaw;}}
-\DoxyCodeLine{00115\ }
-\DoxyCodeLine{00116\ \ \ \ \ \mbox{\hyperlink{functions_8h_aeed490b5901c34b9ab4934c12043e5ca}{outdoorTemp}}.value\ =\ \mbox{\hyperlink{functions_8h_add9bb36f26e78d4a7dfa40104a04818a}{readInputRegister}}(\mbox{\hyperlink{functions_8h_aeed490b5901c34b9ab4934c12043e5ca}{outdoorTemp}}.regAddress)\ /\ 10.0;}
-\DoxyCodeLine{00117\ \ \ \ \ \textcolor{comment}{//\ if\ (outdoorTemp.inputRegs\ >\ 32767)\{}}
-\DoxyCodeLine{00118\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ signedRaw\ =\ outdoorTemp.inputRegs\ -\/\ 65536;}}
-\DoxyCodeLine{00119\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ signedRaw\ =\ signedRaw\ /\ 10.0;}}
-\DoxyCodeLine{00120\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ outdoorTemp.value\ =\ signedRaw;}}
-\DoxyCodeLine{00121\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ signedRaw\ =\ 0;}}
-\DoxyCodeLine{00122\ \ \ \ \ \textcolor{comment}{//\ \}\ else\ \{}}
-\DoxyCodeLine{00123\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ outdoorTemp.value\ =\ outdoorTemp.inputRegs\ /\ 10.0;}}
-\DoxyCodeLine{00124\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ Serial.println(outdoorTemp.value);}}
-\DoxyCodeLine{00125\ \ \ \ \ \textcolor{comment}{//\ \}}}
-\DoxyCodeLine{00126\ \ \ \ \ \mbox{\hyperlink{functions_8h_a9e7232bbdc9e9ddec07979ed05de21a9}{airconDataReadPrint}}(\mbox{\hyperlink{functions_8h_aeed490b5901c34b9ab4934c12043e5ca}{outdoorTemp}}.value,\ \mbox{\hyperlink{functions_8h_aeed490b5901c34b9ab4934c12043e5ca}{outdoorTemp}}.id,\ \mbox{\hyperlink{functions_8h_aeed490b5901c34b9ab4934c12043e5ca}{outdoorTemp}}.unit);}
-\DoxyCodeLine{00127\ \ \ \ \ delay(500);}
+\DoxyCodeLine{00029\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structinputReg}{inputReg}}}
+\DoxyCodeLine{00030\ \{}
+\DoxyCodeLine{00031\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structinputReg_a1ed337ef3c16df7b90c0d42f9e5a865c}{regAddress}};}
+\DoxyCodeLine{00032\ \ \ uint16\_t\ \mbox{\hyperlink{structinputReg_a26c6b8da2522a3b943649ad23ca86446}{inputRegs}};}
+\DoxyCodeLine{00033\ \ \ String\ \mbox{\hyperlink{structinputReg_a8994f66a343679bf4ba83933a1c06fa2}{id}};}
+\DoxyCodeLine{00034\ \ \ String\ \mbox{\hyperlink{structinputReg_ac1a7eb3d89ecb3c0167448dd3f5f4728}{unit}};}
+\DoxyCodeLine{00035\ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{structinputReg_aeb15c759d66bf9ecba7ba46d09118d8e}{value}};}
+\DoxyCodeLine{00036\ \};\ \ }
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structholdReg}{holdReg}}}
+\DoxyCodeLine{00039\ \{}
+\DoxyCodeLine{00040\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structholdReg_a595204bb8891581009765ab3ba108caa}{regAddress}};}
+\DoxyCodeLine{00041\ \ \ uint16\_t\ \mbox{\hyperlink{structholdReg_a016821a79a273a42412b51e3ff65c8d8}{holdingRegs}};}
+\DoxyCodeLine{00042\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{structholdReg_a5cabdb5ebb3ef98848dc0c5411fce23c}{name}};}
+\DoxyCodeLine{00043\ \};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \mbox{\hyperlink{structinputReg}{inputReg}}\ \mbox{\hyperlink{functions_8h_aeed490b5901c34b9ab4934c12043e5ca}{outdoorTemp}}\ =\ \{0,\ \mbox{\hyperlink{functions_8h_ac9eb1f2e97f3e8f0253a86c62dbf7536}{inputRegs}}[2],\ \textcolor{stringliteral}{"{}Temperature\ outside:\ "{}},\ \textcolor{stringliteral}{"{}C"{}}\};}
+\DoxyCodeLine{00046\ \mbox{\hyperlink{structinputReg}{inputReg}}\ \mbox{\hyperlink{functions_8h_ac481ad3ea1df9c91ad3accadab67b7a2}{extractAirTemp}}\{8,\ \mbox{\hyperlink{functions_8h_ac9eb1f2e97f3e8f0253a86c62dbf7536}{inputRegs}}[2],\ \textcolor{stringliteral}{"{}Temperature\ inside:\ "{}},\ \textcolor{stringliteral}{"{}C"{}}\};}
+\DoxyCodeLine{00047\ \mbox{\hyperlink{structinputReg}{inputReg}}\ \mbox{\hyperlink{functions_8h_ac35f88d09ef9b0ae881cced5783fcfd7}{humidityOutdoor}}\{154,\ \mbox{\hyperlink{functions_8h_ac9eb1f2e97f3e8f0253a86c62dbf7536}{inputRegs}}[2],\ \textcolor{stringliteral}{"{}Humidity\ outside:\ "{}},\ \textcolor{stringliteral}{"{}\%\ RH"{}}\};}
+\DoxyCodeLine{00048\ \mbox{\hyperlink{structinputReg}{inputReg}}\ \mbox{\hyperlink{functions_8h_af2a0012dec27681af717360e66370b43}{humidtyRoom}}\{22,\ \mbox{\hyperlink{functions_8h_ac9eb1f2e97f3e8f0253a86c62dbf7536}{inputRegs}}[2],\ \textcolor{stringliteral}{"{}Humidty\ inside:\ "{}},\ \textcolor{stringliteral}{"{}\%\ RH"{}}\};}
+\DoxyCodeLine{00049\ \mbox{\hyperlink{structinputReg}{inputReg}}\ \mbox{\hyperlink{functions_8h_a98e2a37d80f0c03b9dbfd3f6088472a2}{supplyAirPress}}\{12,\ \mbox{\hyperlink{functions_8h_ac9eb1f2e97f3e8f0253a86c62dbf7536}{inputRegs}}[2],\ \textcolor{stringliteral}{"{}Airpressure\ supplied\ to\ unit:\ "{}},\ \textcolor{stringliteral}{"{}Pa"{}}\};}
+\DoxyCodeLine{00050\ \mbox{\hyperlink{structinputReg}{inputReg}}\ \mbox{\hyperlink{functions_8h_a9f72f35c4024c2e0d667ef31af0451a3}{exhaustAirPress}}\{13,\ \mbox{\hyperlink{functions_8h_ac9eb1f2e97f3e8f0253a86c62dbf7536}{inputRegs}}[2],\ \textcolor{stringliteral}{"{}Exhaust\ airpressure:\ "{}},\ \textcolor{stringliteral}{"{}Pa"{}}\};}
+\DoxyCodeLine{00051\ \mbox{\hyperlink{structinputReg}{inputReg}}\ \mbox{\hyperlink{functions_8h_a72fe4c78616d7c07ba0e79dc008695e5}{supplyAirFlow}}\{14,\ \mbox{\hyperlink{functions_8h_ac9eb1f2e97f3e8f0253a86c62dbf7536}{inputRegs}}[2],\ \textcolor{stringliteral}{"{}Air\ flow\ on\ supply:\ "{}},\ \textcolor{stringliteral}{"{}m³/h"{}}\};}
+\DoxyCodeLine{00052\ \mbox{\hyperlink{structinputReg}{inputReg}}\ \mbox{\hyperlink{functions_8h_a4e6aba1f5124292e2b673f205d334b16}{exhaustAirFlow}}\{15,\ \mbox{\hyperlink{functions_8h_ac9eb1f2e97f3e8f0253a86c62dbf7536}{inputRegs}}[2],\ \textcolor{stringliteral}{"{}Air\ flow\ fom\ exhaust:\ "{}},\ \textcolor{stringliteral}{"{}m³/h"{}}\};}
+\DoxyCodeLine{00053\ \mbox{\hyperlink{structholdReg}{holdReg}}\ \mbox{\hyperlink{functions_8h_adfc049dae72bed94ced8d39dad6d14dd}{airUnitAutoMode}}\{367,\ \mbox{\hyperlink{functions_8h_a894c9c43a6340a27ebd2e019ccf4852e}{holdingRegs}}[2],\ \textcolor{stringliteral}{"{}Aircon\ speed\ control:\ "{}}\};}
+\DoxyCodeLine{00054\ \textcolor{comment}{//inputReg\ co2Sensor\{16,\ inputRegs[20],\ "{}CO2\ sensor"{}\};\ //Register\ not\ available\ on\ aircon\ unit}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00058\ \textcolor{comment}{Reference\ values\ for\ modbus\ simulation:}}
+\DoxyCodeLine{00059\ \textcolor{comment}{Input\ register\ values\ (3x)}}
+\DoxyCodeLine{00060\ \textcolor{comment}{1\ =\ 50}}
+\DoxyCodeLine{00061\ \textcolor{comment}{9\ =\ 230}}
+\DoxyCodeLine{00062\ \textcolor{comment}{155\ =\ 560}}
+\DoxyCodeLine{00063\ \textcolor{comment}{23\ =\ 500}}
+\DoxyCodeLine{00064\ \textcolor{comment}{13\ =\ 260}}
+\DoxyCodeLine{00065\ \textcolor{comment}{14\ =\ 240}}
+\DoxyCodeLine{00066\ \textcolor{comment}{15\ =\ 490}}
+\DoxyCodeLine{00067\ \textcolor{comment}{16\ =\ 470}}
+\DoxyCodeLine{00068\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{comment}{//\ Function\ to\ prepare\ for\ data\ transmission}}
+\DoxyCodeLine{00071\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_8h_a1c43d8a4afead0d0df29635242290377}{preTransmission}}()\ \{}
+\DoxyCodeLine{00072\ \ \ \ \ digitalWrite(\mbox{\hyperlink{functions_8h_ac74ee062bc05304c6ba3ae2ac0c63925}{MAX485\_RE\_NEG}},\ HIGH);\ \ \textcolor{comment}{//\ Disable\ receiver}}
+\DoxyCodeLine{00073\ \ \ \ \ digitalWrite(\mbox{\hyperlink{functions_8h_a33a76bc034910d4d3b9242a493de7736}{MAX485\_DE}},\ HIGH);\ \ \ \ \ \ \textcolor{comment}{//\ Enable\ driver}}
+\DoxyCodeLine{00074\ \}}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \textcolor{comment}{//\ Function\ to\ clean\ up\ after\ data\ transmission}}
+\DoxyCodeLine{00077\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_8h_a33b535e84f654e423bb627b25b7b3759}{postTransmission}}()\ \{}
+\DoxyCodeLine{00078\ \ \ \ \ digitalWrite(\mbox{\hyperlink{functions_8h_ac74ee062bc05304c6ba3ae2ac0c63925}{MAX485\_RE\_NEG}},\ LOW);\ \ \ \textcolor{comment}{//\ Enable\ receiver}}
+\DoxyCodeLine{00079\ \ \ \ \ digitalWrite(\mbox{\hyperlink{functions_8h_a33a76bc034910d4d3b9242a493de7736}{MAX485\_DE}},\ LOW);\ \ \ \ \ \ \ \textcolor{comment}{//\ Disable\ driver}}
+\DoxyCodeLine{00080\ \}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00089\ \textcolor{comment}{//\ Function\ to\ read\ input\ registers\ (e.g.,\ motor\ RPM)}}
+\DoxyCodeLine{00090\ uint16\_t\ \mbox{\hyperlink{functions_8h_add9bb36f26e78d4a7dfa40104a04818a}{readInputRegister}}(\textcolor{keywordtype}{int}\ reg)\ \{}
+\DoxyCodeLine{00091\ \ \ \ \ uint16\_t\ val;}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{functions_8h_a9f7da14569cf54a5633c163642e97dff}{modbus}}.readInputRegisters(reg,\ 1)\ ==\ \mbox{\hyperlink{functions_8h_a9f7da14569cf54a5633c163642e97dff}{modbus}}.ku8MBSuccess)\ \{}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Serial.println(modbus.getResponseBuffer(0));}}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ val\ =\ \mbox{\hyperlink{functions_8h_a9f7da14569cf54a5633c163642e97dff}{modbus}}.getResponseBuffer(0);}
+\DoxyCodeLine{00095\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}ERROR:\ Failed\ to\ read\ input\ registers"{}});}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ val\ =\ 8009;\ \textcolor{comment}{//\ Set\ error\ value}}
+\DoxyCodeLine{00098\ \ \ \ \ \}}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordflow}{return}\ val;}
+\DoxyCodeLine{00100\ \}}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00108\ \textcolor{comment}{//\ Function\ to\ write\ holding\ registers\ (e.g.,\ setpoints)}}
+\DoxyCodeLine{00109\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_8h_a21e3bbf9fc0d77aec1e168538db51e66}{writeHoldingRegister}}(\textcolor{keywordtype}{int}\ reg,\ uint16\_t\ val\ )\ \{}
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{comment}{//\ Prepare\ setpoint\ values}}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{comment}{//\ Load\ transmit\ buffer\ with\ setpoint\ values}}
+\DoxyCodeLine{00112\ \ \ \ \ \mbox{\hyperlink{functions_8h_a9f7da14569cf54a5633c163642e97dff}{modbus}}.setTransmitBuffer(0,\ val);}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{comment}{//\ Attempt\ to\ write\ 2\ holding\ registers\ starting\ at\ address\ 3}}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{functions_8h_a9f7da14569cf54a5633c163642e97dff}{modbus}}.writeSingleRegister(reg,\ 1)\ ==\ \mbox{\hyperlink{functions_8h_a9f7da14569cf54a5633c163642e97dff}{modbus}}.ku8MBSuccess)\ \{}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Holding\ Registers\ Updated\ Successfully"{}});}
+\DoxyCodeLine{00116\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}ERROR:\ Failed\ to\ write\ holding\ registers"{}});}
+\DoxyCodeLine{00118\ \ \ \ \ \}}
+\DoxyCodeLine{00119\ \}}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_8h_a9e7232bbdc9e9ddec07979ed05de21a9}{airconDataReadPrint}}(\textcolor{keywordtype}{float}\ val,\ String\ \textcolor{keywordtype}{id},\ String\ unit)\{}
+\DoxyCodeLine{00122\ \ \ \ \ Serial.print(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{00123\ \ \ \ \ Serial.print(val);}
+\DoxyCodeLine{00124\ \ \ \ \ Serial.print(unit);}
+\DoxyCodeLine{00125\ \ \ \ \ Serial.println();}
+\DoxyCodeLine{00126\ \ \ \ \ delay(500);}
+\DoxyCodeLine{00127\ \}}
 \DoxyCodeLine{00128\ }
-\DoxyCodeLine{00129\ \ \ \ \ \mbox{\hyperlink{functions_8h_ac481ad3ea1df9c91ad3accadab67b7a2}{extractAirTemp}}.value\ =\ \mbox{\hyperlink{functions_8h_add9bb36f26e78d4a7dfa40104a04818a}{readInputRegister}}(\mbox{\hyperlink{functions_8h_ac481ad3ea1df9c91ad3accadab67b7a2}{extractAirTemp}}.regAddress)\ /\ 10.0;}
-\DoxyCodeLine{00130\ \ \ \ \ \textcolor{comment}{//\ if\ (raw\ >\ 32767)\{}}
-\DoxyCodeLine{00131\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ raw\ =\ raw\ -\/\ 65536;}}
-\DoxyCodeLine{00132\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ outdoorTemp.inputRegs\ =\ raw\ /\ 10.0;}}
-\DoxyCodeLine{00133\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ raw\ =\ 0;}}
-\DoxyCodeLine{00134\ \ \ \ \ \textcolor{comment}{//\ \}\ else\ \{}}
-\DoxyCodeLine{00135\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ extractAirTemp.inputRegs\ =\ extractAirTemp.inputRegs\ /\ 10.0;}}
-\DoxyCodeLine{00136\ \ \ \ \ \textcolor{comment}{//\ \}}}
-\DoxyCodeLine{00137\ \ \ \ \ \mbox{\hyperlink{functions_8h_a9e7232bbdc9e9ddec07979ed05de21a9}{airconDataReadPrint}}(\mbox{\hyperlink{functions_8h_ac481ad3ea1df9c91ad3accadab67b7a2}{extractAirTemp}}.value,\ \mbox{\hyperlink{functions_8h_ac481ad3ea1df9c91ad3accadab67b7a2}{extractAirTemp}}.id,\ \mbox{\hyperlink{functions_8h_ac481ad3ea1df9c91ad3accadab67b7a2}{extractAirTemp}}.unit);}
-\DoxyCodeLine{00138\ \ \ \ \ delay(500);}
-\DoxyCodeLine{00139\ }
-\DoxyCodeLine{00140\ \ \ \ \ \mbox{\hyperlink{functions_8h_ac35f88d09ef9b0ae881cced5783fcfd7}{humidityOutdoor}}.value\ =\ \mbox{\hyperlink{functions_8h_add9bb36f26e78d4a7dfa40104a04818a}{readInputRegister}}(\mbox{\hyperlink{functions_8h_ac35f88d09ef9b0ae881cced5783fcfd7}{humidityOutdoor}}.regAddress)\ /\ 10.0;}
-\DoxyCodeLine{00141\ \ \ \ \ \mbox{\hyperlink{functions_8h_a9e7232bbdc9e9ddec07979ed05de21a9}{airconDataReadPrint}}(\mbox{\hyperlink{functions_8h_ac35f88d09ef9b0ae881cced5783fcfd7}{humidityOutdoor}}.value,\ \mbox{\hyperlink{functions_8h_ac35f88d09ef9b0ae881cced5783fcfd7}{humidityOutdoor}}.id,\ \mbox{\hyperlink{functions_8h_ac35f88d09ef9b0ae881cced5783fcfd7}{humidityOutdoor}}.unit);}
-\DoxyCodeLine{00142\ \ \ \ \ delay(500);}
-\DoxyCodeLine{00143\ }
-\DoxyCodeLine{00144\ \ \ \ \ \mbox{\hyperlink{functions_8h_af2a0012dec27681af717360e66370b43}{humidtyRoom}}.value\ =\ \mbox{\hyperlink{functions_8h_add9bb36f26e78d4a7dfa40104a04818a}{readInputRegister}}(\mbox{\hyperlink{functions_8h_af2a0012dec27681af717360e66370b43}{humidtyRoom}}.regAddress)\ /\ 10.0;}
-\DoxyCodeLine{00145\ \ \ \ \ \mbox{\hyperlink{functions_8h_a9e7232bbdc9e9ddec07979ed05de21a9}{airconDataReadPrint}}(\mbox{\hyperlink{functions_8h_af2a0012dec27681af717360e66370b43}{humidtyRoom}}.value,\ \mbox{\hyperlink{functions_8h_af2a0012dec27681af717360e66370b43}{humidtyRoom}}.id,\ \mbox{\hyperlink{functions_8h_af2a0012dec27681af717360e66370b43}{humidtyRoom}}.unit);}
-\DoxyCodeLine{00146\ \ \ \ \ delay(500);}
-\DoxyCodeLine{00147\ }
-\DoxyCodeLine{00148\ \ \ \ \ \mbox{\hyperlink{functions_8h_a72fe4c78616d7c07ba0e79dc008695e5}{supplyAirFlow}}.value\ =\ \mbox{\hyperlink{functions_8h_add9bb36f26e78d4a7dfa40104a04818a}{readInputRegister}}(\mbox{\hyperlink{functions_8h_a72fe4c78616d7c07ba0e79dc008695e5}{supplyAirFlow}}.regAddress)\ /\ 10.0;}
-\DoxyCodeLine{00149\ \ \ \ \ \mbox{\hyperlink{functions_8h_a9e7232bbdc9e9ddec07979ed05de21a9}{airconDataReadPrint}}(\mbox{\hyperlink{functions_8h_a72fe4c78616d7c07ba0e79dc008695e5}{supplyAirFlow}}.value,\ \mbox{\hyperlink{functions_8h_a72fe4c78616d7c07ba0e79dc008695e5}{supplyAirFlow}}.id,\ \mbox{\hyperlink{functions_8h_a72fe4c78616d7c07ba0e79dc008695e5}{supplyAirFlow}}.unit);}
-\DoxyCodeLine{00150\ \ \ \ \ delay(500);}
-\DoxyCodeLine{00151\ \ \ \ \ }
-\DoxyCodeLine{00152\ \ \ \ \ \mbox{\hyperlink{functions_8h_a98e2a37d80f0c03b9dbfd3f6088472a2}{supplyAirPress}}.value\ =\ \mbox{\hyperlink{functions_8h_add9bb36f26e78d4a7dfa40104a04818a}{readInputRegister}}(\mbox{\hyperlink{functions_8h_a98e2a37d80f0c03b9dbfd3f6088472a2}{supplyAirPress}}.regAddress)\ /\ 10.0;}
-\DoxyCodeLine{00153\ \ \ \ \ \mbox{\hyperlink{functions_8h_a9e7232bbdc9e9ddec07979ed05de21a9}{airconDataReadPrint}}(\mbox{\hyperlink{functions_8h_a98e2a37d80f0c03b9dbfd3f6088472a2}{supplyAirPress}}.value,\ \mbox{\hyperlink{functions_8h_a98e2a37d80f0c03b9dbfd3f6088472a2}{supplyAirPress}}.id,\ \mbox{\hyperlink{functions_8h_a98e2a37d80f0c03b9dbfd3f6088472a2}{supplyAirPress}}.unit);}
+\DoxyCodeLine{00129\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_8h_abfa43d8e009406c47b53ddf9ca18000b}{readAirconData}}()\{\ \ \ \ \ \ }
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{comment}{//float\ signedRaw;}}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ \ \ \mbox{\hyperlink{functions_8h_aeed490b5901c34b9ab4934c12043e5ca}{outdoorTemp}}.value\ =\ \mbox{\hyperlink{functions_8h_add9bb36f26e78d4a7dfa40104a04818a}{readInputRegister}}(\mbox{\hyperlink{functions_8h_aeed490b5901c34b9ab4934c12043e5ca}{outdoorTemp}}.regAddress)\ /\ 10.0;}
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{comment}{//\ if\ (outdoorTemp.inputRegs\ >\ 32767)\{}}
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ signedRaw\ =\ outdoorTemp.inputRegs\ -\/\ 65536;}}
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ signedRaw\ =\ signedRaw\ /\ 10.0;}}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ outdoorTemp.value\ =\ signedRaw;}}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ signedRaw\ =\ 0;}}
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{comment}{//\ \}\ else\ \{}}
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ outdoorTemp.value\ =\ outdoorTemp.inputRegs\ /\ 10.0;}}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ Serial.println(outdoorTemp.value);}}
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{00142\ \ \ \ \ \mbox{\hyperlink{functions_8h_a9e7232bbdc9e9ddec07979ed05de21a9}{airconDataReadPrint}}(\mbox{\hyperlink{functions_8h_aeed490b5901c34b9ab4934c12043e5ca}{outdoorTemp}}.value,\ \mbox{\hyperlink{functions_8h_aeed490b5901c34b9ab4934c12043e5ca}{outdoorTemp}}.id,\ \mbox{\hyperlink{functions_8h_aeed490b5901c34b9ab4934c12043e5ca}{outdoorTemp}}.unit);}
+\DoxyCodeLine{00143\ \ \ \ \ delay(500);}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ \ \ \ \ \mbox{\hyperlink{functions_8h_ac481ad3ea1df9c91ad3accadab67b7a2}{extractAirTemp}}.value\ =\ \mbox{\hyperlink{functions_8h_add9bb36f26e78d4a7dfa40104a04818a}{readInputRegister}}(\mbox{\hyperlink{functions_8h_ac481ad3ea1df9c91ad3accadab67b7a2}{extractAirTemp}}.regAddress)\ /\ 10.0;}
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{comment}{//\ if\ (raw\ >\ 32767)\{}}
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ raw\ =\ raw\ -\/\ 65536;}}
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ outdoorTemp.inputRegs\ =\ raw\ /\ 10.0;}}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ raw\ =\ 0;}}
+\DoxyCodeLine{00150\ \ \ \ \ \textcolor{comment}{//\ \}\ else\ \{}}
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ extractAirTemp.inputRegs\ =\ extractAirTemp.inputRegs\ /\ 10.0;}}
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{00153\ \ \ \ \ \mbox{\hyperlink{functions_8h_a9e7232bbdc9e9ddec07979ed05de21a9}{airconDataReadPrint}}(\mbox{\hyperlink{functions_8h_ac481ad3ea1df9c91ad3accadab67b7a2}{extractAirTemp}}.value,\ \mbox{\hyperlink{functions_8h_ac481ad3ea1df9c91ad3accadab67b7a2}{extractAirTemp}}.id,\ \mbox{\hyperlink{functions_8h_ac481ad3ea1df9c91ad3accadab67b7a2}{extractAirTemp}}.unit);}
 \DoxyCodeLine{00154\ \ \ \ \ delay(500);}
 \DoxyCodeLine{00155\ }
-\DoxyCodeLine{00156\ \ \ \ \ \mbox{\hyperlink{functions_8h_a4e6aba1f5124292e2b673f205d334b16}{exhaustAirFlow}}.value\ =\ \mbox{\hyperlink{functions_8h_add9bb36f26e78d4a7dfa40104a04818a}{readInputRegister}}(\mbox{\hyperlink{functions_8h_a4e6aba1f5124292e2b673f205d334b16}{exhaustAirFlow}}.regAddress)\ /\ 10.0;}
-\DoxyCodeLine{00157\ \ \ \ \ \mbox{\hyperlink{functions_8h_a9e7232bbdc9e9ddec07979ed05de21a9}{airconDataReadPrint}}(\mbox{\hyperlink{functions_8h_a4e6aba1f5124292e2b673f205d334b16}{exhaustAirFlow}}.value,\ \mbox{\hyperlink{functions_8h_a4e6aba1f5124292e2b673f205d334b16}{exhaustAirFlow}}.id,\ \mbox{\hyperlink{functions_8h_a4e6aba1f5124292e2b673f205d334b16}{exhaustAirFlow}}.unit);}
+\DoxyCodeLine{00156\ \ \ \ \ \mbox{\hyperlink{functions_8h_ac35f88d09ef9b0ae881cced5783fcfd7}{humidityOutdoor}}.value\ =\ \mbox{\hyperlink{functions_8h_add9bb36f26e78d4a7dfa40104a04818a}{readInputRegister}}(\mbox{\hyperlink{functions_8h_ac35f88d09ef9b0ae881cced5783fcfd7}{humidityOutdoor}}.regAddress)\ /\ 10.0;}
+\DoxyCodeLine{00157\ \ \ \ \ \mbox{\hyperlink{functions_8h_a9e7232bbdc9e9ddec07979ed05de21a9}{airconDataReadPrint}}(\mbox{\hyperlink{functions_8h_ac35f88d09ef9b0ae881cced5783fcfd7}{humidityOutdoor}}.value,\ \mbox{\hyperlink{functions_8h_ac35f88d09ef9b0ae881cced5783fcfd7}{humidityOutdoor}}.id,\ \mbox{\hyperlink{functions_8h_ac35f88d09ef9b0ae881cced5783fcfd7}{humidityOutdoor}}.unit);}
 \DoxyCodeLine{00158\ \ \ \ \ delay(500);}
-\DoxyCodeLine{00159\ \ \ \ \ }
-\DoxyCodeLine{00160\ \ \ \ \ \mbox{\hyperlink{functions_8h_a9f72f35c4024c2e0d667ef31af0451a3}{exhaustAirPress}}.value\ =\ \mbox{\hyperlink{functions_8h_add9bb36f26e78d4a7dfa40104a04818a}{readInputRegister}}(\mbox{\hyperlink{functions_8h_a9f72f35c4024c2e0d667ef31af0451a3}{exhaustAirPress}}.regAddress)\ /\ 10.0;}
-\DoxyCodeLine{00161\ \ \ \ \ \mbox{\hyperlink{functions_8h_a9e7232bbdc9e9ddec07979ed05de21a9}{airconDataReadPrint}}(\mbox{\hyperlink{functions_8h_a9f72f35c4024c2e0d667ef31af0451a3}{exhaustAirPress}}.value,\ \mbox{\hyperlink{functions_8h_a9f72f35c4024c2e0d667ef31af0451a3}{exhaustAirPress}}.id,\ \mbox{\hyperlink{functions_8h_a9f72f35c4024c2e0d667ef31af0451a3}{exhaustAirPress}}.unit);}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ \ \ \ \ \mbox{\hyperlink{functions_8h_af2a0012dec27681af717360e66370b43}{humidtyRoom}}.value\ =\ \mbox{\hyperlink{functions_8h_add9bb36f26e78d4a7dfa40104a04818a}{readInputRegister}}(\mbox{\hyperlink{functions_8h_af2a0012dec27681af717360e66370b43}{humidtyRoom}}.regAddress)\ /\ 10.0;}
+\DoxyCodeLine{00161\ \ \ \ \ \mbox{\hyperlink{functions_8h_a9e7232bbdc9e9ddec07979ed05de21a9}{airconDataReadPrint}}(\mbox{\hyperlink{functions_8h_af2a0012dec27681af717360e66370b43}{humidtyRoom}}.value,\ \mbox{\hyperlink{functions_8h_af2a0012dec27681af717360e66370b43}{humidtyRoom}}.id,\ \mbox{\hyperlink{functions_8h_af2a0012dec27681af717360e66370b43}{humidtyRoom}}.unit);}
 \DoxyCodeLine{00162\ \ \ \ \ delay(500);}
 \DoxyCodeLine{00163\ }
-\DoxyCodeLine{00164\ \ \ \ \ \textcolor{comment}{//co2Sensor.inputRegs\ =\ readInputRegister(co2Sensor.regAddress);}}
-\DoxyCodeLine{00165\ \ \ \ \ \textcolor{comment}{//Serial.println("{}Air\ temp:\ "{}\ +\ co2Sensor.inputRegs);}}
-\DoxyCodeLine{00166\ \ \ \ \ \textcolor{comment}{//delay(500);}}
-\DoxyCodeLine{00167\ \}}
-\DoxyCodeLine{00168\ }
-\DoxyCodeLine{00169\ }
-\DoxyCodeLine{00170\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_8h_af7517bdd27420a534c69b55fe5baf00d}{clearValBuffer}}()\{}
-\DoxyCodeLine{00171\ \ \ \ \ \mbox{\hyperlink{functions_8h_aeed490b5901c34b9ab4934c12043e5ca}{outdoorTemp}}.value\ =\ 0;}
-\DoxyCodeLine{00172\ \ \ \ \ \mbox{\hyperlink{functions_8h_ac481ad3ea1df9c91ad3accadab67b7a2}{extractAirTemp}}.value\ =\ 0;}
-\DoxyCodeLine{00173\ \ \ \ \ \mbox{\hyperlink{functions_8h_ac35f88d09ef9b0ae881cced5783fcfd7}{humidityOutdoor}}.value\ =\ 0;}
-\DoxyCodeLine{00174\ \ \ \ \ \mbox{\hyperlink{functions_8h_af2a0012dec27681af717360e66370b43}{humidtyRoom}}.value\ =\ 0;}
-\DoxyCodeLine{00175\ \ \ \ \ \mbox{\hyperlink{functions_8h_a72fe4c78616d7c07ba0e79dc008695e5}{supplyAirFlow}}.value\ =\ 0;}
-\DoxyCodeLine{00176\ \ \ \ \ \mbox{\hyperlink{functions_8h_a98e2a37d80f0c03b9dbfd3f6088472a2}{supplyAirPress}}.value\ =\ 0;}
-\DoxyCodeLine{00177\ \ \ \ \ \mbox{\hyperlink{functions_8h_a4e6aba1f5124292e2b673f205d334b16}{exhaustAirFlow}}.value\ =\ 0;}
-\DoxyCodeLine{00178\ \ \ \ \ \mbox{\hyperlink{functions_8h_a9f72f35c4024c2e0d667ef31af0451a3}{exhaustAirPress}}.value\ =\ 0;}
-\DoxyCodeLine{00179\ \}}
-\DoxyCodeLine{00180\ }
-\DoxyCodeLine{00181\ }
-\DoxyCodeLine{00182\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_8h_a60bdef55bb648f1a1be2599ddb893bbb}{modbusStartup}}()\{}
-\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Initialize\ RS485\ control\ pins}}
-\DoxyCodeLine{00184\ \ \ \ \ pinMode(\mbox{\hyperlink{functions_8h_ac74ee062bc05304c6ba3ae2ac0c63925}{MAX485\_RE\_NEG}},\ OUTPUT);}
-\DoxyCodeLine{00185\ \ \ \ \ pinMode(\mbox{\hyperlink{functions_8h_a33a76bc034910d4d3b9242a493de7736}{MAX485\_DE}},\ OUTPUT);}
-\DoxyCodeLine{00186\ \ \ \ \ digitalWrite(\mbox{\hyperlink{functions_8h_ac74ee062bc05304c6ba3ae2ac0c63925}{MAX485\_RE\_NEG}},\ LOW);}
-\DoxyCodeLine{00187\ \ \ \ \ digitalWrite(\mbox{\hyperlink{functions_8h_a33a76bc034910d4d3b9242a493de7736}{MAX485\_DE}},\ LOW);}
-\DoxyCodeLine{00188\ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}ESP32\ Modbus\ RTU\ Communication\ Initializing..."{}});}
-\DoxyCodeLine{00189\ }
-\DoxyCodeLine{00190\ \ \ \ \ \textcolor{comment}{//\ Configure\ UART2\ for\ Modbus\ communication}}
-\DoxyCodeLine{00191\ \ \ \ \ Serial2.begin(\mbox{\hyperlink{functions_8h_ad4455691936f92fdd6c37566fc58ba1f}{BAUD\_RATE}},\ SERIAL\_8N1,\ \mbox{\hyperlink{functions_8h_aa7089c01538b339ae745173c117f95b9}{RX\_PIN}},\ \mbox{\hyperlink{functions_8h_a3bb17f5daa2b1eaef58c8aa2d989e27e}{TX\_PIN}});}
-\DoxyCodeLine{00192\ }
-\DoxyCodeLine{00193\ \ \ \ \ \textcolor{comment}{//\ Initialize\ Modbus\ master\ with\ slave\ ID\ and\ UART2}}
-\DoxyCodeLine{00194\ \ \ \ \ \mbox{\hyperlink{functions_8h_a9f7da14569cf54a5633c163642e97dff}{modbus}}.begin(\mbox{\hyperlink{functions_8h_a1aef92ccc58f5b6eb11f9a32c8f1e3d6}{MODBUS\_SLAVE\_ID}},\ Serial2);}
-\DoxyCodeLine{00195\ }
-\DoxyCodeLine{00196\ \ \ \ \ \textcolor{comment}{//\ Set\ pre-\/\ and\ post-\/transmission\ callbacks\ for\ RS485\ control}}
-\DoxyCodeLine{00197\ \ \ \ \ \mbox{\hyperlink{functions_8h_a9f7da14569cf54a5633c163642e97dff}{modbus}}.preTransmission(\mbox{\hyperlink{functions_8h_a1c43d8a4afead0d0df29635242290377}{preTransmission}});}
-\DoxyCodeLine{00198\ \ \ \ \ \mbox{\hyperlink{functions_8h_a9f7da14569cf54a5633c163642e97dff}{modbus}}.postTransmission(\mbox{\hyperlink{functions_8h_a33b535e84f654e423bb627b25b7b3759}{postTransmission}});}
-\DoxyCodeLine{00199\ }
-\DoxyCodeLine{00200\ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Modbus\ RTU\ Communication\ Initialized\ Successfully"{}});}
-\DoxyCodeLine{00201\ \}}
-\DoxyCodeLine{00202\ }
-\DoxyCodeLine{00203\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{functions_8h_a308f1de59084e07c366b163590b3bbfe}{packet}};}
-\DoxyCodeLine{00204\ }
-\DoxyCodeLine{00205\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{functions_8h_a8ac263a6b1bbb921fb3654e40015bd16}{jsonBuffer}}[1024];}
-\DoxyCodeLine{00206\ }
-\DoxyCodeLine{00207\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_8h_a602b0d79488408175817d7845c45178f}{dataToJson}}()\{}
-\DoxyCodeLine{00208\ \ \ \ \ \mbox{\hyperlink{functions_8h_abfa43d8e009406c47b53ddf9ca18000b}{readAirconData}}();}
-\DoxyCodeLine{00209\ }
-\DoxyCodeLine{00210\ \ \ \ \ \mbox{\hyperlink{functions_8h_acc70417be3b0e73fb50f78212b2ee44b}{doc}}[\textcolor{stringliteral}{"{}outdoorTemp"{}}]\ =\ \mbox{\hyperlink{functions_8h_aeed490b5901c34b9ab4934c12043e5ca}{outdoorTemp}}.value;}
-\DoxyCodeLine{00211\ \ \ \ \ \mbox{\hyperlink{functions_8h_acc70417be3b0e73fb50f78212b2ee44b}{doc}}[\textcolor{stringliteral}{"{}airTemp"{}}]\ =\ \mbox{\hyperlink{functions_8h_ac481ad3ea1df9c91ad3accadab67b7a2}{extractAirTemp}}.value;}
-\DoxyCodeLine{00212\ \ \ \ \ \mbox{\hyperlink{functions_8h_acc70417be3b0e73fb50f78212b2ee44b}{doc}}[\textcolor{stringliteral}{"{}humidtyOutdoor"{}}]\ =\ \mbox{\hyperlink{functions_8h_ac35f88d09ef9b0ae881cced5783fcfd7}{humidityOutdoor}}.value;}
-\DoxyCodeLine{00213\ \ \ \ \ \mbox{\hyperlink{functions_8h_acc70417be3b0e73fb50f78212b2ee44b}{doc}}[\textcolor{stringliteral}{"{}humidtyRoom"{}}]\ =\ \mbox{\hyperlink{functions_8h_af2a0012dec27681af717360e66370b43}{humidtyRoom}}.value;}
-\DoxyCodeLine{00214\ \ \ \ \ \textcolor{comment}{//doc["{}co2Sensor"{}]\ =\ co2Sensor.inputRegs;}}
-\DoxyCodeLine{00215\ \ \ \ \ \mbox{\hyperlink{functions_8h_acc70417be3b0e73fb50f78212b2ee44b}{doc}}[\textcolor{stringliteral}{"{}supplyAirPressure"{}}]\ =\ \mbox{\hyperlink{functions_8h_a98e2a37d80f0c03b9dbfd3f6088472a2}{supplyAirPress}}.value;}
-\DoxyCodeLine{00216\ \ \ \ \ \mbox{\hyperlink{functions_8h_acc70417be3b0e73fb50f78212b2ee44b}{doc}}[\textcolor{stringliteral}{"{}supplyAirFlow"{}}]\ =\ \mbox{\hyperlink{functions_8h_a72fe4c78616d7c07ba0e79dc008695e5}{supplyAirFlow}}.value;}
-\DoxyCodeLine{00217\ \ \ \ \ \mbox{\hyperlink{functions_8h_acc70417be3b0e73fb50f78212b2ee44b}{doc}}[\textcolor{stringliteral}{"{}exhaustAirPressure"{}}]\ =\ \mbox{\hyperlink{functions_8h_a9f72f35c4024c2e0d667ef31af0451a3}{exhaustAirPress}}.value;}
-\DoxyCodeLine{00218\ \ \ \ \ \mbox{\hyperlink{functions_8h_acc70417be3b0e73fb50f78212b2ee44b}{doc}}[\textcolor{stringliteral}{"{}exhaustAirFlow"{}}]\ =\ \mbox{\hyperlink{functions_8h_a4e6aba1f5124292e2b673f205d334b16}{exhaustAirFlow}}.value;}
-\DoxyCodeLine{00219\ }
-\DoxyCodeLine{00220\ \ \ \ \ \textcolor{comment}{//\ Determine\ required\ size\ to\ hold\ JSON\ +\ '\(\backslash\)0'}}
-\DoxyCodeLine{00221\ \ \ \ \ serializeJson(\mbox{\hyperlink{functions_8h_acc70417be3b0e73fb50f78212b2ee44b}{doc}},\ \mbox{\hyperlink{functions_8h_a8ac263a6b1bbb921fb3654e40015bd16}{jsonBuffer}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{functions_8h_a8ac263a6b1bbb921fb3654e40015bd16}{jsonBuffer}}));\ \ \textcolor{comment}{//\ Use\ fixed\ size}}
-\DoxyCodeLine{00222\ \ \ \ \ \mbox{\hyperlink{functions_8h_a8ac263a6b1bbb921fb3654e40015bd16}{jsonBuffer}}[\textcolor{keyword}{sizeof}(\mbox{\hyperlink{functions_8h_a8ac263a6b1bbb921fb3654e40015bd16}{jsonBuffer}})-\/1]\ =\ \textcolor{charliteral}{'\(\backslash\)0'};\ \ \textcolor{comment}{//\ Ensure\ null\ termination}}
-\DoxyCodeLine{00223\ \ \ \ \ Serial.println(\mbox{\hyperlink{functions_8h_a8ac263a6b1bbb921fb3654e40015bd16}{jsonBuffer}});\ \textcolor{comment}{//\ prints\ JSON\ as\ char\ array/string}}
-\DoxyCodeLine{00224\ }
-\DoxyCodeLine{00225\ \ \ \ \ delay(500);}
-\DoxyCodeLine{00226\ \}}
-\DoxyCodeLine{00227\ }
-\DoxyCodeLine{00228\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_8h_aef46f666200b23c39932a85ab1ac03b1}{modbusAirconModeCheck}}()\{\ }
-\DoxyCodeLine{00229\ \ \ \ \ uint16\_t\ targetVal\ =\ 2;}
-\DoxyCodeLine{00230\ \ \ \ \ uint8\_t\ readResult\ =\ \mbox{\hyperlink{functions_8h_a9f7da14569cf54a5633c163642e97dff}{modbus}}.readHoldingRegisters(367,\ 1);}
-\DoxyCodeLine{00231\ \ \ \ \ \textcolor{keywordflow}{if}\ (readResult\ ==\ \mbox{\hyperlink{functions_8h_a9f7da14569cf54a5633c163642e97dff}{modbus}}.ku8MBSuccess)\ \{}
-\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ uint16\_t\ holdingValue\ =\ \mbox{\hyperlink{functions_8h_a9f7da14569cf54a5633c163642e97dff}{modbus}}.getResponseBuffer(0);}
-\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (holdingValue\ ==\ 0)\ \{}
-\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Anlæg\ tænder\ på\ normal\ kraft"{}});}
-\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ matchVal\ =\ \mbox{\hyperlink{functions_8h_a9f7da14569cf54a5633c163642e97dff}{modbus}}.writeSingleRegister(367,\ 2);}
-\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (matchVal\ ==\ \mbox{\hyperlink{functions_8h_a9f7da14569cf54a5633c163642e97dff}{modbus}}.ku8MBSuccess)\ \{}
-\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Successfully\ wrote\ 2\ to\ register\ 368"{}});}
-\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ delay(500);}
-\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.print(\textcolor{stringliteral}{"{}Modbus\ error:\ "{}});}
-\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \ \ \ \ delay(400);}
-\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
-\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00244\ \ \ \ \ \}}
-\DoxyCodeLine{00245\ \}}
+\DoxyCodeLine{00164\ \ \ \ \ \mbox{\hyperlink{functions_8h_a72fe4c78616d7c07ba0e79dc008695e5}{supplyAirFlow}}.value\ =\ \mbox{\hyperlink{functions_8h_add9bb36f26e78d4a7dfa40104a04818a}{readInputRegister}}(\mbox{\hyperlink{functions_8h_a72fe4c78616d7c07ba0e79dc008695e5}{supplyAirFlow}}.regAddress)\ /\ 10.0;}
+\DoxyCodeLine{00165\ \ \ \ \ \mbox{\hyperlink{functions_8h_a9e7232bbdc9e9ddec07979ed05de21a9}{airconDataReadPrint}}(\mbox{\hyperlink{functions_8h_a72fe4c78616d7c07ba0e79dc008695e5}{supplyAirFlow}}.value,\ \mbox{\hyperlink{functions_8h_a72fe4c78616d7c07ba0e79dc008695e5}{supplyAirFlow}}.id,\ \mbox{\hyperlink{functions_8h_a72fe4c78616d7c07ba0e79dc008695e5}{supplyAirFlow}}.unit);}
+\DoxyCodeLine{00166\ \ \ \ \ delay(500);}
+\DoxyCodeLine{00167\ \ \ \ \ }
+\DoxyCodeLine{00168\ \ \ \ \ \mbox{\hyperlink{functions_8h_a98e2a37d80f0c03b9dbfd3f6088472a2}{supplyAirPress}}.value\ =\ \mbox{\hyperlink{functions_8h_add9bb36f26e78d4a7dfa40104a04818a}{readInputRegister}}(\mbox{\hyperlink{functions_8h_a98e2a37d80f0c03b9dbfd3f6088472a2}{supplyAirPress}}.regAddress)\ /\ 10.0;}
+\DoxyCodeLine{00169\ \ \ \ \ \mbox{\hyperlink{functions_8h_a9e7232bbdc9e9ddec07979ed05de21a9}{airconDataReadPrint}}(\mbox{\hyperlink{functions_8h_a98e2a37d80f0c03b9dbfd3f6088472a2}{supplyAirPress}}.value,\ \mbox{\hyperlink{functions_8h_a98e2a37d80f0c03b9dbfd3f6088472a2}{supplyAirPress}}.id,\ \mbox{\hyperlink{functions_8h_a98e2a37d80f0c03b9dbfd3f6088472a2}{supplyAirPress}}.unit);}
+\DoxyCodeLine{00170\ \ \ \ \ delay(500);}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \ \ \ \ \mbox{\hyperlink{functions_8h_a4e6aba1f5124292e2b673f205d334b16}{exhaustAirFlow}}.value\ =\ \mbox{\hyperlink{functions_8h_add9bb36f26e78d4a7dfa40104a04818a}{readInputRegister}}(\mbox{\hyperlink{functions_8h_a4e6aba1f5124292e2b673f205d334b16}{exhaustAirFlow}}.regAddress)\ /\ 10.0;}
+\DoxyCodeLine{00173\ \ \ \ \ \mbox{\hyperlink{functions_8h_a9e7232bbdc9e9ddec07979ed05de21a9}{airconDataReadPrint}}(\mbox{\hyperlink{functions_8h_a4e6aba1f5124292e2b673f205d334b16}{exhaustAirFlow}}.value,\ \mbox{\hyperlink{functions_8h_a4e6aba1f5124292e2b673f205d334b16}{exhaustAirFlow}}.id,\ \mbox{\hyperlink{functions_8h_a4e6aba1f5124292e2b673f205d334b16}{exhaustAirFlow}}.unit);}
+\DoxyCodeLine{00174\ \ \ \ \ delay(500);}
+\DoxyCodeLine{00175\ \ \ \ \ }
+\DoxyCodeLine{00176\ \ \ \ \ \mbox{\hyperlink{functions_8h_a9f72f35c4024c2e0d667ef31af0451a3}{exhaustAirPress}}.value\ =\ \mbox{\hyperlink{functions_8h_add9bb36f26e78d4a7dfa40104a04818a}{readInputRegister}}(\mbox{\hyperlink{functions_8h_a9f72f35c4024c2e0d667ef31af0451a3}{exhaustAirPress}}.regAddress)\ /\ 10.0;}
+\DoxyCodeLine{00177\ \ \ \ \ \mbox{\hyperlink{functions_8h_a9e7232bbdc9e9ddec07979ed05de21a9}{airconDataReadPrint}}(\mbox{\hyperlink{functions_8h_a9f72f35c4024c2e0d667ef31af0451a3}{exhaustAirPress}}.value,\ \mbox{\hyperlink{functions_8h_a9f72f35c4024c2e0d667ef31af0451a3}{exhaustAirPress}}.id,\ \mbox{\hyperlink{functions_8h_a9f72f35c4024c2e0d667ef31af0451a3}{exhaustAirPress}}.unit);}
+\DoxyCodeLine{00178\ \ \ \ \ delay(500);}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00180\ \ \ \ \ \textcolor{comment}{//co2Sensor.inputRegs\ =\ readInputRegister(co2Sensor.regAddress);}}
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{comment}{//Serial.println("{}Air\ temp:\ "{}\ +\ co2Sensor.inputRegs);}}
+\DoxyCodeLine{00182\ \ \ \ \ \textcolor{comment}{//delay(500);}}
+\DoxyCodeLine{00183\ \}}
+\DoxyCodeLine{00184\ }
+\DoxyCodeLine{00185\ }
+\DoxyCodeLine{00186\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_8h_af7517bdd27420a534c69b55fe5baf00d}{clearValBuffer}}()\{}
+\DoxyCodeLine{00187\ \ \ \ \ \mbox{\hyperlink{functions_8h_aeed490b5901c34b9ab4934c12043e5ca}{outdoorTemp}}.value\ =\ 0;}
+\DoxyCodeLine{00188\ \ \ \ \ \mbox{\hyperlink{functions_8h_ac481ad3ea1df9c91ad3accadab67b7a2}{extractAirTemp}}.value\ =\ 0;}
+\DoxyCodeLine{00189\ \ \ \ \ \mbox{\hyperlink{functions_8h_ac35f88d09ef9b0ae881cced5783fcfd7}{humidityOutdoor}}.value\ =\ 0;}
+\DoxyCodeLine{00190\ \ \ \ \ \mbox{\hyperlink{functions_8h_af2a0012dec27681af717360e66370b43}{humidtyRoom}}.value\ =\ 0;}
+\DoxyCodeLine{00191\ \ \ \ \ \mbox{\hyperlink{functions_8h_a72fe4c78616d7c07ba0e79dc008695e5}{supplyAirFlow}}.value\ =\ 0;}
+\DoxyCodeLine{00192\ \ \ \ \ \mbox{\hyperlink{functions_8h_a98e2a37d80f0c03b9dbfd3f6088472a2}{supplyAirPress}}.value\ =\ 0;}
+\DoxyCodeLine{00193\ \ \ \ \ \mbox{\hyperlink{functions_8h_a4e6aba1f5124292e2b673f205d334b16}{exhaustAirFlow}}.value\ =\ 0;}
+\DoxyCodeLine{00194\ \ \ \ \ \mbox{\hyperlink{functions_8h_a9f72f35c4024c2e0d667ef31af0451a3}{exhaustAirPress}}.value\ =\ 0;}
+\DoxyCodeLine{00195\ \}}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00197\ }
+\DoxyCodeLine{00198\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_8h_a60bdef55bb648f1a1be2599ddb893bbb}{modbusStartup}}()\{}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Initialize\ RS485\ control\ pins}}
+\DoxyCodeLine{00200\ \ \ \ \ pinMode(\mbox{\hyperlink{functions_8h_ac74ee062bc05304c6ba3ae2ac0c63925}{MAX485\_RE\_NEG}},\ OUTPUT);}
+\DoxyCodeLine{00201\ \ \ \ \ pinMode(\mbox{\hyperlink{functions_8h_a33a76bc034910d4d3b9242a493de7736}{MAX485\_DE}},\ OUTPUT);}
+\DoxyCodeLine{00202\ \ \ \ \ digitalWrite(\mbox{\hyperlink{functions_8h_ac74ee062bc05304c6ba3ae2ac0c63925}{MAX485\_RE\_NEG}},\ LOW);}
+\DoxyCodeLine{00203\ \ \ \ \ digitalWrite(\mbox{\hyperlink{functions_8h_a33a76bc034910d4d3b9242a493de7736}{MAX485\_DE}},\ LOW);}
+\DoxyCodeLine{00204\ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}ESP32\ Modbus\ RTU\ Communication\ Initializing..."{}});}
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00206\ \ \ \ \ \textcolor{comment}{//\ Configure\ UART2\ for\ Modbus\ communication}}
+\DoxyCodeLine{00207\ \ \ \ \ Serial2.begin(\mbox{\hyperlink{functions_8h_ad4455691936f92fdd6c37566fc58ba1f}{BAUD\_RATE}},\ SERIAL\_8N1,\ \mbox{\hyperlink{functions_8h_aa7089c01538b339ae745173c117f95b9}{RX\_PIN}},\ \mbox{\hyperlink{functions_8h_a3bb17f5daa2b1eaef58c8aa2d989e27e}{TX\_PIN}});}
+\DoxyCodeLine{00208\ }
+\DoxyCodeLine{00209\ \ \ \ \ \textcolor{comment}{//\ Initialize\ Modbus\ master\ with\ slave\ ID\ and\ UART2}}
+\DoxyCodeLine{00210\ \ \ \ \ \mbox{\hyperlink{functions_8h_a9f7da14569cf54a5633c163642e97dff}{modbus}}.begin(\mbox{\hyperlink{functions_8h_a1aef92ccc58f5b6eb11f9a32c8f1e3d6}{MODBUS\_SLAVE\_ID}},\ Serial2);}
+\DoxyCodeLine{00211\ }
+\DoxyCodeLine{00212\ \ \ \ \ \textcolor{comment}{//\ Set\ pre-\/\ and\ post-\/transmission\ callbacks\ for\ RS485\ control}}
+\DoxyCodeLine{00213\ \ \ \ \ \mbox{\hyperlink{functions_8h_a9f7da14569cf54a5633c163642e97dff}{modbus}}.preTransmission(\mbox{\hyperlink{functions_8h_a1c43d8a4afead0d0df29635242290377}{preTransmission}});}
+\DoxyCodeLine{00214\ \ \ \ \ \mbox{\hyperlink{functions_8h_a9f7da14569cf54a5633c163642e97dff}{modbus}}.postTransmission(\mbox{\hyperlink{functions_8h_a33b535e84f654e423bb627b25b7b3759}{postTransmission}});}
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00216\ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Modbus\ RTU\ Communication\ Initialized\ Successfully"{}});}
+\DoxyCodeLine{00217\ \}}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00219\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{functions_8h_a308f1de59084e07c366b163590b3bbfe}{packet}};}
+\DoxyCodeLine{00220\ }
+\DoxyCodeLine{00221\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{functions_8h_a8ac263a6b1bbb921fb3654e40015bd16}{jsonBuffer}}[1024];}
+\DoxyCodeLine{00222\ }
+\DoxyCodeLine{00223\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_8h_a602b0d79488408175817d7845c45178f}{dataToJson}}()\{}
+\DoxyCodeLine{00224\ \ \ \ \ \mbox{\hyperlink{functions_8h_abfa43d8e009406c47b53ddf9ca18000b}{readAirconData}}();}
+\DoxyCodeLine{00225\ }
+\DoxyCodeLine{00226\ \ \ \ \ \mbox{\hyperlink{functions_8h_acc70417be3b0e73fb50f78212b2ee44b}{doc}}[\textcolor{stringliteral}{"{}outdoorTemp"{}}]\ =\ \mbox{\hyperlink{functions_8h_aeed490b5901c34b9ab4934c12043e5ca}{outdoorTemp}}.value;}
+\DoxyCodeLine{00227\ \ \ \ \ \mbox{\hyperlink{functions_8h_acc70417be3b0e73fb50f78212b2ee44b}{doc}}[\textcolor{stringliteral}{"{}airTemp"{}}]\ =\ \mbox{\hyperlink{functions_8h_ac481ad3ea1df9c91ad3accadab67b7a2}{extractAirTemp}}.value;}
+\DoxyCodeLine{00228\ \ \ \ \ \mbox{\hyperlink{functions_8h_acc70417be3b0e73fb50f78212b2ee44b}{doc}}[\textcolor{stringliteral}{"{}humidtyOutdoor"{}}]\ =\ \mbox{\hyperlink{functions_8h_ac35f88d09ef9b0ae881cced5783fcfd7}{humidityOutdoor}}.value;}
+\DoxyCodeLine{00229\ \ \ \ \ \mbox{\hyperlink{functions_8h_acc70417be3b0e73fb50f78212b2ee44b}{doc}}[\textcolor{stringliteral}{"{}humidtyRoom"{}}]\ =\ \mbox{\hyperlink{functions_8h_af2a0012dec27681af717360e66370b43}{humidtyRoom}}.value;}
+\DoxyCodeLine{00230\ \ \ \ \ \textcolor{comment}{//doc["{}co2Sensor"{}]\ =\ co2Sensor.inputRegs;}}
+\DoxyCodeLine{00231\ \ \ \ \ \mbox{\hyperlink{functions_8h_acc70417be3b0e73fb50f78212b2ee44b}{doc}}[\textcolor{stringliteral}{"{}supplyAirPressure"{}}]\ =\ \mbox{\hyperlink{functions_8h_a98e2a37d80f0c03b9dbfd3f6088472a2}{supplyAirPress}}.value;}
+\DoxyCodeLine{00232\ \ \ \ \ \mbox{\hyperlink{functions_8h_acc70417be3b0e73fb50f78212b2ee44b}{doc}}[\textcolor{stringliteral}{"{}supplyAirFlow"{}}]\ =\ \mbox{\hyperlink{functions_8h_a72fe4c78616d7c07ba0e79dc008695e5}{supplyAirFlow}}.value;}
+\DoxyCodeLine{00233\ \ \ \ \ \mbox{\hyperlink{functions_8h_acc70417be3b0e73fb50f78212b2ee44b}{doc}}[\textcolor{stringliteral}{"{}exhaustAirPressure"{}}]\ =\ \mbox{\hyperlink{functions_8h_a9f72f35c4024c2e0d667ef31af0451a3}{exhaustAirPress}}.value;}
+\DoxyCodeLine{00234\ \ \ \ \ \mbox{\hyperlink{functions_8h_acc70417be3b0e73fb50f78212b2ee44b}{doc}}[\textcolor{stringliteral}{"{}exhaustAirFlow"{}}]\ =\ \mbox{\hyperlink{functions_8h_a4e6aba1f5124292e2b673f205d334b16}{exhaustAirFlow}}.value;}
+\DoxyCodeLine{00235\ }
+\DoxyCodeLine{00236\ \ \ \ \ \textcolor{comment}{//\ Determine\ required\ size\ to\ hold\ JSON\ +\ '\(\backslash\)0'}}
+\DoxyCodeLine{00237\ \ \ \ \ serializeJson(\mbox{\hyperlink{functions_8h_acc70417be3b0e73fb50f78212b2ee44b}{doc}},\ \mbox{\hyperlink{functions_8h_a8ac263a6b1bbb921fb3654e40015bd16}{jsonBuffer}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{functions_8h_a8ac263a6b1bbb921fb3654e40015bd16}{jsonBuffer}}));\ \ \textcolor{comment}{//\ Use\ fixed\ size}}
+\DoxyCodeLine{00238\ \ \ \ \ \mbox{\hyperlink{functions_8h_a8ac263a6b1bbb921fb3654e40015bd16}{jsonBuffer}}[\textcolor{keyword}{sizeof}(\mbox{\hyperlink{functions_8h_a8ac263a6b1bbb921fb3654e40015bd16}{jsonBuffer}})-\/1]\ =\ \textcolor{charliteral}{'\(\backslash\)0'};\ \ \textcolor{comment}{//\ Ensure\ null\ termination}}
+\DoxyCodeLine{00239\ \ \ \ \ Serial.println(\mbox{\hyperlink{functions_8h_a8ac263a6b1bbb921fb3654e40015bd16}{jsonBuffer}});\ \textcolor{comment}{//\ prints\ JSON\ as\ char\ array/string}}
+\DoxyCodeLine{00240\ }
+\DoxyCodeLine{00241\ \ \ \ \ delay(500);}
+\DoxyCodeLine{00242\ \}}
+\DoxyCodeLine{00243\ }
+\DoxyCodeLine{00244\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_8h_aef46f666200b23c39932a85ab1ac03b1}{modbusAirconModeCheck}}()\{\ }
+\DoxyCodeLine{00245\ \ \ \ \ uint16\_t\ targetVal\ =\ 2;}
+\DoxyCodeLine{00246\ \ \ \ \ uint8\_t\ readResult\ =\ \mbox{\hyperlink{functions_8h_a9f7da14569cf54a5633c163642e97dff}{modbus}}.readHoldingRegisters(367,\ 1);}
+\DoxyCodeLine{00247\ \ \ \ \ \textcolor{keywordflow}{if}\ (readResult\ ==\ \mbox{\hyperlink{functions_8h_a9f7da14569cf54a5633c163642e97dff}{modbus}}.ku8MBSuccess)\ \{}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ uint16\_t\ holdingValue\ =\ \mbox{\hyperlink{functions_8h_a9f7da14569cf54a5633c163642e97dff}{modbus}}.getResponseBuffer(0);}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (holdingValue\ ==\ 0)\ \{}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Anlæg\ tænder\ på\ normal\ kraft"{}});}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ matchVal\ =\ \mbox{\hyperlink{functions_8h_a9f7da14569cf54a5633c163642e97dff}{modbus}}.writeSingleRegister(367,\ 2);}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (matchVal\ ==\ \mbox{\hyperlink{functions_8h_a9f7da14569cf54a5633c163642e97dff}{modbus}}.ku8MBSuccess)\ \{}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Successfully\ wrote\ 2\ to\ register\ 368"{}});}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \ \ \ \ delay(500);}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.print(\textcolor{stringliteral}{"{}Modbus\ error:\ "{}});}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ delay(400);}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00260\ \ \ \ \ \}}
+\DoxyCodeLine{00261\ \}}
 
 \end{DoxyCode}

@@ -22,6 +22,10 @@ JsonDocument doc;
 // Create Modbus master object
 ModbusMaster modbus;
 
+/**
+ * @brief 
+ * 
+ */
 struct inputReg
 {
   int regAddress;
@@ -75,7 +79,13 @@ void postTransmission() {
     digitalWrite(MAX485_DE, LOW);       // Disable driver
 }
 
-
+/**
+ * @brief Test function to read input registers
+ * 
+ * 
+ * @param reg 
+ * @return uint16_t 
+ */
 // Function to read input registers (e.g., motor RPM)
 uint16_t readInputRegister(int reg) {
     uint16_t val;
@@ -89,6 +99,12 @@ uint16_t readInputRegister(int reg) {
     return val;
 }
 
+/**
+ * @brief Test function to write holding registers
+ * 
+ * @param reg 
+ * @param val 
+ */
 // Function to write holding registers (e.g., setpoints)
 void writeHoldingRegister(int reg, uint16_t val ) {
     // Prepare setpoint values
