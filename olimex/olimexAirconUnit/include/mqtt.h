@@ -44,7 +44,7 @@ const int mqtt_port = 1883;
  */
 
 
-void connectMQTT() {
+void connectingMQTT() {
   while (!client.connected()) {
     Serial.println("Connecting to MQTT...");
     if (client.connect("ESP32Client")) {
@@ -94,7 +94,7 @@ void networkBegin(){
 
 void connectMqtt(){
     if (!client.connected()) {
-    connectMQTT();
+    connectingMQTT();
   }
   client.loop();
 }

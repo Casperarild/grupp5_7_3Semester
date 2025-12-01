@@ -110,7 +110,7 @@ void writeHoldingRegister(int reg, uint16_t val ) {
     // Prepare setpoint values
     // Load transmit buffer with setpoint values
     modbus.setTransmitBuffer(0, val);
-    // Attempt to write 2 holding registers starting at address 3
+    // Attempt to write 1 holding registers starting at address reg
     if (modbus.writeSingleRegister(reg, 1) == modbus.ku8MBSuccess) {
         Serial.println("Holding Registers Updated Successfully");
     } else {
@@ -216,7 +216,6 @@ void modbusStartup(){
     Serial.println("Modbus RTU Communication Initialized Successfully");
 }
 
-const char* packet;
 
 char jsonBuffer[1024];
 
@@ -234,28 +233,29 @@ void dataToJson(){
     doc["exhaustAirFlow"] = exhaustAirFlow.value;
 
     // Determine required size to hold JSON + '\0'
-    serializeJson(doc, jsonBuffer, sizeof(jsonBuffer));  // Use fixed size
-    jsonBuffer[sizeof(jsonBuffer)-1] = '\0';  // Ensure null termination
-    Serial.println(jsonBuffer); // prints JSON as char array/string
+    serializeJson(doc, jsonBuffer, sizeof(jsonBuffer));     // Use fixed size
+    jsonBuffer[sizeof(jsonBuffer)-1] = '\0';                // Ensure null termination
+    Serial.println(jsonBuffer);                             // prints JSON as char array/string
 
     delay(500);
 }
 
 void modbusAirconModeCheck(){ 
-    uint16_t targetVal = 2;
     uint8_t readResult = modbus.readHoldingRegisters(367, 1);
     if (readResult == modbus.ku8MBSuccess) {
         uint16_t holdingValue = modbus.getResponseBuffer(0);
         if (holdingValue == 0) {
             Serial.println("Anlæg tænder på normal kraft");
             uint8_t matchVal = modbus.writeSingleRegister(367, 2);
-        if (matchVal == modbus.ku8MBSuccess) {
-            Serial.println("Successfully wrote 2 to register 368");
-            delay(500);
-        } else {
-            Serial.print("Modbus error: ");
-            delay(400);
+            if (matchVal == modbus.ku8MBSuccess) {
+                Serial.println("Successfully wrote 2 to register 368");
+                delay(500);
+            } else {
+                Serial.print("Modbus error: ");
+                delay(400);
             } 
         }
     }
 }
+
+    //uint16_t targetVal = 2;
