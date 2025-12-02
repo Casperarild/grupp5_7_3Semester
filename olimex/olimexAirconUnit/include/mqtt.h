@@ -91,3 +91,19 @@ void networkBegin(){
     Network.onEvent(WiFiEvent);
     ETH.begin();
 }
+
+void connectMqtt(){
+    if (!client.connected()) {
+    connectMQTT();
+  }
+  client.loop();
+}
+
+
+void jsonPublish(){
+    if (client.publish(topic, jsonBuffer)) {
+      Serial.println("JSON published");
+    } else {
+      Serial.println("Publish failed"); 
+    }   
+}
