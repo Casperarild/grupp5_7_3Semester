@@ -110,6 +110,11 @@ void airconDataReadPrint(float val, String id, String unit){
     delay(500);
 }
 
+/**
+ * @brief 
+ * 
+ * 
+ */
 void readAirconData(){      
     //float signedRaw;
 
