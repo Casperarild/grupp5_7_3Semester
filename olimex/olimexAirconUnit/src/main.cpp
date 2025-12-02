@@ -47,4 +47,3 @@ void loop() {
   clearValBuffer();
   delay(200);
 }
-

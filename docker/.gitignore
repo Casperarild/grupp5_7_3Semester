@@ -1,3 +1,4 @@
 Lokigraf/grafana-storage/grafana.db
+Lokigraf/promtail-config/positions/positions.yaml
 dockMQTT/mosquitto/data/mosquitto.db
 dockMQTT/mosquitto/log/mosquitto.log
