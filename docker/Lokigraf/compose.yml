@@ -19,6 +19,7 @@ services:
     image: grafana/promtail:latest
     container_name: promtail
     volumes:
+      - ./promtail-config/positions:/promtail
       - ./promtail-config/config.yml:/etc/promtail/config.yml
       - ../dockMQTT/mosquitto/log:/mosquitto/log
       - ../QuestDB/app/logs:/app/logs
