@@ -1,3 +1,5 @@
+version: "3.8"
+
 networks:
   api_net:
     external: true
@@ -5,6 +7,9 @@ networks:
     external: true
   mqtt_net:
     external: true
+
+volumes:
+  questdb-data:
 
 services:
 
@@ -18,8 +23,7 @@ services:
       - "9009:9009"
       - "9003:9003"
     volumes:
-      - ./questdb-data:/var/lib/questdb
-      - ./questdb-data/conf/log.conf:/conf/log.conf
+      - questdb-data:/var/lib/questdb
     environment:
       QDB_PG_USER: admin
       QDB_PG_PASSWORD: quest
@@ -30,12 +34,11 @@ services:
       - api_net
       - loki_net
     healthcheck:
-      test: ["CMD-SHELL", "echo", "</dev/tcp/localhost/9003"] # Tjekker om der er forbindelse til port 9003 via TCP, 9003 er healthcheck porten for QuestDB
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 10s
-      
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:9003/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
 
   fastapi:
     build:
@@ -60,7 +63,7 @@ services:
       - mqtt_net
       - loki_net
     healthcheck:
-      test: ["CMD-SHELL", "echo", "</dev/tcp/http://localhost:8000/"] # Tjekker om der er forbindelse til port 8000
+      test: ["CMD-SHELL", "echo </dev/tcp/localhost/80 || exit 1"]
       interval: 10s
       timeout: 5s
       retries: 5

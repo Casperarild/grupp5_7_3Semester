@@ -2,7 +2,7 @@
     This sketch shows the Ethernet event usage
 
 */
-
+ 
 // Important to be defined BEFORE including ETH.h for ETH.begin() to work.
 // Example RMII LAN8720 (Olimex, etc.)
 #ifndef ETH_PHY_MDC

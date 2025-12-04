@@ -1,6 +1,6 @@
 #include <ModbusMaster.h>
 #include <ArduinoJson.h>
-
+ 
 // ================ MODBUS COMMUNICATION CONFIGURATION ================
 #define RX_PIN 36         // UART2 RX pin 36 for olimex 16 for esp
 #define TX_PIN 4           // UART2 TX pin 4 for olimex 17 for esp
@@ -55,12 +55,12 @@ Reference values for modbus simulation:
 Input register values (3x)
 1 = 50
 9 = 230
-155 = 560
-23 = 500
 13 = 260
 14 = 240
 15 = 490
 16 = 470
+23 = 500    
+155 = 560
 */
 
 // Function to prepare for data transmission
@@ -118,27 +118,25 @@ void airconDataReadPrint(float val, String id, String unit){
 void readAirconData(){      
     //float signedRaw;
 
-    outdoorTemp.value = readInputRegister(outdoorTemp.regAddress) / 10.0;
-    // if (outdoorTemp.inputRegs > 32767){
-    //     signedRaw = outdoorTemp.inputRegs - 65536;
-    //     signedRaw = signedRaw / 10.0;
-    //     outdoorTemp.value = signedRaw;
-    //     signedRaw = 0;
-    // } else {
-    //     outdoorTemp.value = outdoorTemp.inputRegs / 10.0;
-    //     Serial.println(outdoorTemp.value);
-    // }
+    uint16_t outdoorTemps = readInputRegister(outdoorTemp.regAddress);
+    if (outdoorTemps > 32767){
+        int16_t signedRaw = outdoorTemps - 65536;
+        outdoorTemp.value = signedRaw / 10.0;
+        signedRaw = 0;
+    } else {
+        outdoorTemp.value = outdoorTemp.inputRegs / 10.0;
+    }
     airconDataReadPrint(outdoorTemp.value, outdoorTemp.id, outdoorTemp.unit);
     delay(500);
 
-    extractAirTemp.value = readInputRegister(extractAirTemp.regAddress) / 10.0;
-    // if (raw > 32767){
-    //     raw = raw - 65536;
-    //     outdoorTemp.inputRegs = raw / 10.0;
-    //     raw = 0;
-    // } else {
-    //     extractAirTemp.inputRegs = extractAirTemp.inputRegs / 10.0;
-    // }
+    uint16_t airTemps = readInputRegister(extractAirTemp.regAddress);
+    if (airTemps > 32767){
+        int16_t signedRaw = airTemps - 65536;
+        extractAirTemp.value = signedRaw / 10.0;
+        signedRaw = 0;
+    } else {
+        extractAirTemp.inputRegs = extractAirTemp.inputRegs / 10.0;
+    }
     airconDataReadPrint(extractAirTemp.value, extractAirTemp.id, extractAirTemp.unit);
     delay(500);
 
