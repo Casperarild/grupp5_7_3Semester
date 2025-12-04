@@ -118,6 +118,10 @@ void airconDataReadPrint(float val, String id, String unit){
 void readAirconData(){      
     //float signedRaw;
 
+    /**
+     * @brief Negative temp function
+     * 
+     */
     uint16_t outdoorTemps = readInputRegister(outdoorTemp.regAddress);
     if (outdoorTemps > 32767){
         int16_t signedRaw = outdoorTemps - 65536;
